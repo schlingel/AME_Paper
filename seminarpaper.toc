@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {2}Typographic Design}{1}
+\contentsline {subsection}{\numberline {2.1}Tables}{1}
+\contentsline {subsection}{\numberline {2.2}Figures}{1}
+\contentsline {subsection}{\numberline {2.3}Fonts}{2}
+\contentsline {subsection}{\numberline {2.4}Code}{2}
+\contentsline {section}{\numberline {3}Bibliographic Issues}{3}
+\contentsline {subsection}{\numberline {3.1}Literature Search}{3}
+\contentsline {subsection}{\numberline {3.2}BibTeX}{3}
+\contentsline {section}{References}{4}

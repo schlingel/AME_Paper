@@ -1,0 +1,49 @@
+\begin{thebibliography}{1}
+
+\bibitem{misc:BIGWebsite}
+{\sc {Business Informatics Group}}.
+\newblock http://www.big.tuwien.ac.at.
+\newblock Accessed: 2010-11-09.
+
+\bibitem{book:umlatwork}
+{\sc Hitz, M., Kappel, G., Kapsammer, E., and Retschitzegger, W.}
+\newblock {\em {UML @ Work, Objektorientierte Modellierung mit UML 2}}, 3.~ed.
+\newblock dpunkt.verlag, 2005 (in German).
+
+\bibitem{jour:B2BServices}
+{\sc Huemer, C., Liegl, P., Schuster, R., and Zapletal, M.}
+\newblock {B2B Services: Worksheet-Driven Development of Modeling Artifacts and
+  Code}.
+\newblock {\em Computer Journal 52}, 2 (2009), 28--67.
+
+\bibitem{mast:AUMLProfile}
+{\sc Langer, P.}
+\newblock {Konflikterkennung in der Modellversionierung}.
+\newblock Master's thesis, Vienna University of Technology, 2009.
+
+\bibitem{man:BPEL}
+{\sc OASIS}.
+\newblock {\em {Business Process Execution Language 2.0 (WS-BPEL 2.0)}}, 2007.
+
+\bibitem{proc:TheWebMLApproach}
+{\sc Schauerhuber, A., Wimmer, M., Schwinger, W., Kapsammer, E., and
+  Retschitzegger, W.}
+\newblock {Aspect-Oriented Modeling of Ubiquitous Web Applications: The
+  aspectWebML Approach}.
+\newblock In {\em Proceedings of the 14th Annual IEEE International Conference
+  and Workshops on the Engineering of Computer-Based Systems (ECBS '07), March
+  26-29, Tucson, Arizona, USA\/} (2007), IEEE CS Press, pp.~569--576.
+
+\bibitem{incoll:ErhardKonrad1992}
+{\sc Schwinger, W., and Koch, N.}
+\newblock {Modeling Web Applications}.
+\newblock In {\em {Web Engineering}}, G.~Kappel, B.~Pr\"{o}ll, S.~Reich, and
+  W.~Retschitzegger, Eds. John Wiley \& Sons, Ltd, 2006, pp.~39--64.
+
+\bibitem{phdthesis:manuelWimmer}
+{\sc Wimmer, M.}
+\newblock {\em {From Mining to Mapping and Roundtrip Transformations - A
+  Systematic Approach to Model-based Tool Integration}}.
+\newblock PhD thesis, Vienna University of Technology, 2008.
+
+\end{thebibliography}
