@@ -1,0 +1,18 @@
+Demystifying Model Transformations: An Approach Based on Automated Rule Inference
+-> System um mittels formaler Regeln Transformationsfehler besser debuggen zu können. Sehr verwandt mit unserem Thema <-> kann guter Input sein.
+
+Null dereference verification via over-approximated weakest pre-conditions analysis
+-> Statische Analyse um NPEs erkennen zu kennen. Vielleicht für Ausblick geeignet.
+
+Mutation-driven Generation of Unit Tests and Oracles
+-> Guter Grundlagenartikel
+
+
+Reducing the Cost of Model-Based Testing through Test Case Diversity
+-> Zu weiter Scope? Zumindestens gut für's Ausblickkapitel. Es geht darum, dass bewertet werden kann ob die Testqualität verbessert wird.
+
+Model Transformation Testing: The State of the Art
+-> Gut für Einführung
+
+Model transformations for migrating legacy deployment models in the automotive industry
+-> Als Referenz für Verwendung in der Industrie. Ein Satz, max. ein Absatz, vielleicht brauchbar?
