@@ -60,10 +60,17 @@ This abstract summarizes the content of this paper in about 70 to 150 words. \do
 
 \section{Introduction}
 
-This document is intended as a template and guideline and should support the author in the course of creating a seminar paper. Assessment criteria comprise the quality of the theoretical and/or practical work as well as structure, content and wording of the written seminar paper. Careful attention should be given to the basics of scientific work (e.g., correct citation).
+The broader goal of this work is to create an introduction to a specific field of software testing. Software testing is a process, or a series processes engineered to check if a program does what it is designed to do and that id does not do anything unintended.\cite{Myers:2004} Model based testing (MBT) is a variant of testing. Test cases are not written by the programmer directly. The programmer creates a model of the requirements and in a second step the test cases are generated on base of the model.\cite{Utting:2012}
+
+Mutation testing is a fault-based testing technique. It applys changes to the input and creates a mutant. A mutant represents is a faulty program. In the best case the changes, which are applied by the mutator, represent mistakes a programmer would make.\cite{mutationssurvey:yue}
+
+The mutation score is the ratio of the number of detected faults over the total number of the sseeded faults. It is a way to meassure how effective an input test set is.\cite{mutationssurvey:yue}
+
+This report discusses a technique to create an mutator which doesn't work on model base but on meta-models. The purpose is to automate the creation of mutations by creating generic mutators.
 
 \section{General}
-In this part of the paper we want to explain the basics of the requirements we needed for Mutations for and with ATL Model Transformations.
+
+In this part of the paper we want to explain the basics of the requirements we needed for Mutations for and with ATL Model Transformations. 
 
 \subsection{Model transformation}
 Model transformation is an important technique in software development, espacially in Model-Driven Software Development (MDSD) and Model-Driven Software Development (MDA). There exists different types of model transformations like Model-To-Model Transformation and Model-To-Text Transformation.  
