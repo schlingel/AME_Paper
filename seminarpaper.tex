@@ -9,6 +9,7 @@
 \usetikzlibrary{arrows,automata}
 \usepackage{xspace}
 \usepackage {pdfsync}
+\usepackage{amsmath}
 
 \usepackage{ngerman}
 \usepackage[ngerman, english]{babel}
@@ -81,9 +82,20 @@ The process of mutation testing consists of these components:
 	\label{fig:Mutation_Process}
 \end{figure}
 
-The mutation score is the ratio of the number of detected faults over the total number of the sseeded faults. It is a way to meassure how effective an input test set is.\cite{mutationssurvey:yue}
+The goal of the process\ref{fig:Mutation_Process} is to \textit{kill} or identify faulty versions of P. If a mutant outputs the same data as the P for the same input data it's called \textit{equivalent}. In this case this mutant has to removed from the set of mutants under test.
 
-This report discusses a technique to create an mutator which doesn't work on model base but on meta-models. The purpose is to automate the creation of mutations by creating generic mutators.
+The last step is to assess how good the tests are and check if they should be improved. Assume \textit{KM} as the set of the killed mutants, \textit{M} is the set of all mutants and \textit{EM} is the set of all identified, equivalent mutants. Then the mutation score \textit{MS} is calculated like this:\cite{mutationssurvey:yue}
+
+\begin{equation}
+	MS = \frac{\left|KM\right|}{\left|M\right| - \left|EM\right|}
+	\label{eq:ms}
+\end{equation}
+
+If this value is to small the tests have to be improved. 
+
+The success of this method depends on the set of mutants used in the process. Manual creation of mutants is a tedious and time consuming task. Therefore a quick, reliable and efficent creation of mutants is proposed in \cite{troya:2015}.
+
+Troya et. al. builds upon ATL and higher order transformations (HOT) to create transformations to automatically generate mutants.
 
 \section{General}
 
