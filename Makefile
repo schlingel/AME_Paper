@@ -1,8 +1,6 @@
 build:
-	latex ./seminarpaper
+	pdflatex ./seminarpaper
 	bibtex ./seminarpaper
-	latex ./seminarpaper 
-	latex ./seminarpaper
 	pdflatex ./seminarpaper
 	
 clean:
