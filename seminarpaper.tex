@@ -87,17 +87,67 @@ This report discusses a technique to create an mutator which doesn't work on mod
 
 \section{General}
 
-In this part of the paper we want to explain the basics of the requirements we needed for Mutations for and with ATL Model Transformations and how they are related to the overall topic.
+Model transformations play an important role in the Model Driven Engineering
+(MDE) approach. Developing model transformation definitions is expected to
+become a common task in model driven software development. \cite{atl:frederic}
+In this part of the paper we want to explain the basics of the requirements we needed for Mutations for and with ATL Model Transformations.
 
 \subsection{Model transformation}
 Model transformation is an important technique in software development, espacially in Model-Driven Software Development (MDSD) and Model-Driven Software Development (MDA). There exists different types of model transformations like Model-To-Model Transformation and Model-To-Text Transformation.  
 
 \subsection{ATL}
-ATL is a....
+ATL is a model transformation language containing a mixture of declarative and
+imperative constructs. ATL is applied in the context of the
+transformation pattern shown in \label{fig:overview_atl}. In this pattern a source model Ma is transformed into a target model Mb according to a transformation definition mma2mmb.atl written in the ATL language. The transformation definition is a model conforming to the ATL metamodel. All metamodels conform to the MOF.
+ATL is a hybrid transformation language. It contains a mixture of declarative
+and imperative constructs. We encourage a declarative style of specifying transformations. The declarative style of transformation specification has a number of advantages. It is usually based on specifying relations between source and target patterns and thus tends to be closer to the way the developers intuitively perceive a transformation. This style stresses on encoding these relations and hides the details related to selection of source elements, rule triggering and ordering, dealing with traceability, etc. Therefore, it can hide complex transformation algorithms behind a simple syntax.\cite{atl:frederic}
+
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Overview_ATL.jpg}
+	\caption{Overview of the ATL transformational approach}
+	\label{fig:overview_atl}
+\end{figure}~\cite{atl:frederic}
+
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Class_metamodel.jpg}
+	\caption{Class metamodel}
+	\label{fig:class_metamodel_atl}
+\end{figure}~\cite{atl:frederic}
+
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Relational_metamodel.jpg}
+	\caption{Relational metamodel}
+	\label{fig:relational_metamodel_atl}
+\end{figure}~\cite{atl:frederic}
+
+In the following you can see a short example of a ATL transformation:
+\begin{verbatim}
+//Start Program
+module Entities2Forms;
+create OUT : Forms from IN : Forms;
+
+rule EntityModel2FormModel {
+	from
+		em : Forms!EntityModel
+	to 
+		fm : Forms!FormModel (
+		)
+}
+//End Program
+\end{verbatim}
+
+This ATL file shows a tranformation Entities2Form. The source model is the 'IN'
+model and the target model is 'OUT'. The rule mapped the elements EntityModel to
+FormModel. 
+
 
 \subsection{High Order Transformations}
 High Order Transformations are defined in some special languages of model
-transformations. That means that the model transformation is itself a model. 
+transformations. That means that the model transformation is itself a model. The
+input and output models are also themselves transformation models. 
 
 \begin{figure}[tb]
 	\centering

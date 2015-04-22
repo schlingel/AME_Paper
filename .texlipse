@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Wed Apr 15 18:59:23 CEST 2015
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=
+mainTexFile=seminarpaper.tex
+outputFile=seminarpaper.pdf
+langSpell=
+markDer=true
+srcDir=
