@@ -1,4 +1,4 @@
-\documentclass{llncs}
+	\documentclass{llncs}
 
 \usepackage{url}
 \usepackage[pdftex]{graphicx}
@@ -166,9 +166,27 @@ FormModel.
 
 
 \subsection{High Order Transformations}
-High Order Transformations are defined in some special languages of model
-transformations. That means that the model transformation is itself a model. The
-input and output models are also themselves transformation models. 
+
+Higher order transformations is a model transformation such that its input and/or output models are themselves transformation models.\cite{Tisi:2009}
+
+Therefore a transformation model is:
+
+\begin{itemize}
+	\item The input of a HOT
+	\item The output of a HOT
+	\item Or it is both
+\end{itemize}
+
+Tisi et. al identified four transformation patterns for HOTs:
+
+\begin{itemize}
+	\item \textbf{Transformation Synthesis} These HOTs generate transformations. If any input is used it's not a transformation.
+	\item \textbf{Transformation Analysis} take transformations as input and generate data of different kinds as output. The output is never a transformation.
+	\item \textbf{Transformation (De)composition} is the integration of multiple transformations of the input and/or integration of transformations as output.
+	\item \textbf{Transformation Modification} is defined by modifing an input transformation and generating an output transformation.
+\end{itemize}
+
+The focus of this work is on \textit{Transformation Modifications} (short TM). 
 
 \subsection{Mutations in Model Transformations}
 
