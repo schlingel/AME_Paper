@@ -218,6 +218,78 @@ The focus of this work is on \textit{Transformation Modifications} (short TM).
 \textbf{Change}
 
 \textbf\textit{{Implementation}}
+To change the value of a binding you first need to know that there are two major types of binding values: Primitive Expressions and Variable Expressions.
+As a fiirst example we will do a value change of all String Expressions to the same "Hello" String.
+To achieve this, we first have to search for all bindings with the value type "ATL!StringExp" and set this value to our defined string value.
+
+\begin{lstlisting}
+rule ValueChangeBinding_All{
+	from
+	 b : ATL!Binding (b.value.oclIsTypeOf(ATL!StringExp))
+	to
+	 c : ATL!Binding (
+	 	value <- newStringExp
+	 ),
+	 newStringExp : ATL!StringExp(
+	 	stringSymbol <- 'hello'	
+	 )
+}
+\end{lstlisting}
+
+As an extension to this approach, in a second step we want to overwrite all String expressions to the first String value of the input model. This only make sense, if we have more than one string expression, so we added a condition to do this.
+
+\begin{lstlisting}
+rule ValueChangeBinding_AllSameStringValue{
+	from
+	 b : ATL!Binding(
+	 	b.value.oclIsTypeOf(ATL!StringExp) and 
+		ATL!StringExp.allInstances() -> size() > 1
+	 )
+	to
+	 c : ATL!Binding(
+	 	value <- stringexpression
+	 ), 
+	 stringexpression : ATL!StringExp(
+	 	stringSymbol <- (ATL!StringExp.allInstances() 
+			-> first()).stringSymbol
+	)
+\end{lstlisting}
+
+The third approach in this category was to switch the first with the last value binding. For this we fist filter only the OutPatternElements which have more than one binding and have only StringExpression bindings.
+As a second step we exclude the first and the last binding from the binding-list to replace them with our new bindings with the prepend and append commands.
+As a third step we have to create our new binding-elements.
+Such a binding element needs three values: the corresponding OutPatternElement, the property name and the value.
+As outPatternElement and propertyName we take the original outPatternElement and propertyName, as value, we take value from the last binding for our new first elemen and the value from the fist binding for our new last element.
+Important to achieve correct values is, that we use the original binding list from the "from"-clause of the rule.
+
+\begin{lstlisting}
+rule ValueChangeBinding_Switch{
+from
+ope : ATL!OutPatternElement (
+	ope.bindings 
+		-> forAll(e | e.value.oclIsTypeOf(ATL!StringExp)) and
+		ope.bindings -> size() > 1
+)
+to
+ope2 : ATL!OutPatternElement (
+	bindings <- ope.bindings -> excluding (ope.bindings -> first()) 
+		-> excluding (ope.bindings -> last())
+		-> prepend (bindingNewFirst)
+		-> append (bindingNewLast)
+), 
+bindingNewLast : ATL!Binding (
+	outPatternElement <- ope2, 
+	propertyName <- (ope.bindings -> last()).propertyName,
+	value <- (ope.bindings -> first()).value
+),
+bindingNewFirst : ATL!Binding (
+	outPatternElement <- ope2,
+	propertyName <- (ope.bindings -> first()).propertyName,
+	value <- (ope.bindings -> last()).value	
+)
+	
+}
+\end{lstlisting}
 
 \textbf\textit{{Discussion}}
 
