@@ -218,8 +218,25 @@ The focus of this work is on \textit{Transformation Modifications} (short TM).
 \textbf{Change}
 
 \textbf\textit{{Implementation}}
-To change the value of a binding you first need to know that there are two major types of binding values: Primitive Expressions and Variable Expressions.
-As a fiirst example we will do a value change of all String Expressions to the same "Hello" String.
+
+There are two types of major types of binding values in the ATL metamodel:
+
+\begin{itemize}
+	\item Primitive Expressions
+	\item Variable Expressions
+\end{itemize}
+
+The primitive expressions are directly assignable in the ATL rules. Variable expressions have to be composed from the available objects in the metamodel. (See \ref{fig:atl_metamodel_excerpt})
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/ATL_Metamodel_Excerpt}
+	\caption{Excerpt of the ATL metamodel}
+	\label{fig:atl_metamodel_excerpt}
+\end{figure}~
+
+The first example shows how to change the value of all String Expressions. The output value will be the String "Hello".
+
 To achieve this, we first have to search for all bindings with the value type "ATL!StringExp" and set this value to our defined string value.
 
 \begin{lstlisting}
@@ -256,10 +273,13 @@ rule ValueChangeBinding_AllSameStringValue{
 \end{lstlisting}
 
 The third approach in this category was to switch the first with the last value binding. For this we fist filter only the OutPatternElements which have more than one binding and have only StringExpression bindings.
-As a second step we exclude the first and the last binding from the binding-list to replace them with our new bindings with the prepend and append commands.
-As a third step we have to create our new binding-elements.
+
+As a second step we exclude the first and the last binding from the binding-list to replace them with our new bindings with the prepend and append commands. As a third step we have to create our new binding-elements.
+
 Such a binding element needs three values: the corresponding OutPatternElement, the property name and the value.
+
 As outPatternElement and propertyName we take the original outPatternElement and propertyName, as value, we take value from the last binding for our new first elemen and the value from the fist binding for our new last element.
+
 Important to achieve correct values is, that we use the original binding list from the "from"-clause of the rule.
 
 \begin{lstlisting}
