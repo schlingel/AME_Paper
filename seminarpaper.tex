@@ -203,15 +203,71 @@ The focus of this work is on \textit{Transformation Modifications} (short TM).
 
 \subsubsection{Binding}
 
+\textbf{Deletion}
+
+Deleting a Binding is very uncomplicated comparativeley to other mutation operations.
+To delete a binding you only have to choose a binding in the from part of the ATL transformation and let the "to"-part be empty.
+The following example deletes  all bindings.
+
+\begin{lstlisting}
+rule DeleteBinding{
+  from b: ATL!Binding
+  to
+}
+\end{lstlisting}
+
 \textbf{Addition}
 
 \textbf\textit{{Implementation}}
 
-\textbf\textit{{Discussion}}
+To add a binding is not that easy it seems on the first view.
+As we cannot add any binding to an OutPatternElement, we need to know what possible properties the actual class has.
+As we don't know this in our High Order Transformation, we have to do a step in between and afterwards do a Second Order HOT to replace the properyName of the binding with an correct propertyName.
 
-\textbf{Deletion}
+As a first step we have to implement our High Order Transformation. To know, where we later have to replace the propertyName, we now set the propertyName to a dummy value like "NewBindingPropertyName".
+In Order to have the binding not duplicated, we need to filter our OutPatternElements to only choose the ones wich don't already have the binding with the dummy propertyName.
 
-\textbf\textit{{Implementation}}
+\begin{lstlisting}
+rule AddBinding{
+  from 
+  ope : ATL!OutPatternElement ( 
+    ope.bindings -> forAll( b | b.propertyName <> 'NewBinding_PropertyName')
+  )
+  to
+  ope2 : ATL!OutPatternElement (
+    bindings <- ope.bindings -> append(bindingNewElement)
+  ), 
+  bindingNewElement : ATL!Binding (
+    outPatternElement <- ope2,
+    propertyName <- 'NewBinding_PropertyName',
+    value <- newValue	
+  ),
+  newValue : ATL!StringExp (
+    stringSymbol <- 'testvalue'
+  )	
+}
+\end{lstlisting}
+
+This dummy value will be replaced in the Second Order HOT.
+We search in our ATL Metamodel for all StringExpressions with our dummy value and replace it with a new value.
+To get this new value we search for our general supertype in our metamodel. From this supertype we can now choose an attribute (called EStructuralFeature), which we can add to all of the subtypes.
+
+\begin{lstlisting}
+rule AddBindingNames {
+from b : ATL!StringExp (
+    b.stringSymbol = 'NewBinding_PropertyName'
+)
+using{
+  classes : Sequence(OUT_MM!EClass) 
+	= OUT_MM!EClass.allInstancesFrom('OUT_MM') 
+	-> select(c | c.getESuperTypes() -> size() <= 0);
+}
+to b2 : ATL!StringExp ( 
+  stringSymbol <- classes 
+	-> first().getEStructuralFeatures() -> last().name
+)	
+}
+\end{lstlisting}
 
 \textbf\textit{{Discussion}}
 
