@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdflatex 2015.4.22)  11 MAY 2015 19:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdflatex 2015.4.22)  12 MAY 2015 12:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -862,88 +862,122 @@ LaTeX Warning: Citation `misc:ModelingLanguages' on page 5 undefined on input l
 ine 198.
 
 [5 <./figures/HOT.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 226.
+<figures/ATL_Metamodel_Excerpt.png, id=51, 692.5875pt x 333.245pt>
+File: figures/ATL_Metamodel_Excerpt.png Graphic file (type png)
 
- (c:/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+<use figures/ATL_Metamodel_Excerpt.png>
+Package pdftex.def Info: figures/ATL_Metamodel_Excerpt.png used on input line 2
+33.
+(pdftex.def)             Requested size: 242.98541pt x 116.91206pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 243.
+
+
+(c:/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 226.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 243.
 
-Overfull \hbox (18.88019pt too wide) in paragraph at lines 228--229
+Overfull \hbox (18.88019pt too wide) in paragraph at lines 245--246
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 231.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 248.
 
 (c:/texlive/2014/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 231.
-
-Overfull \hbox (0.88pt too wide) in paragraph at lines 246--247
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 248.
+ [6 <./figures/ATL_Metamodel_Excerpt.png>]
+Overfull \hbox (0.88pt too wide) in paragraph at lines 263--264
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (18.88019pt too wide) in paragraph at lines 253--254
+Overfull \hbox (18.88019pt too wide) in paragraph at lines 270--271
 [][][][][][][][][][][][][][][][] 
  []
 
-[6]
-Overfull \hbox (66.88068pt too wide) in paragraph at lines 270--271
+
+Overfull \hbox (66.88068pt too wide) in paragraph at lines 290--291
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (78.8808pt too wide) in paragraph at lines 275--276
+[7]
+Overfull \hbox (78.8808pt too wide) in paragraph at lines 295--296
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (24.88025pt too wide) in paragraph at lines 282--283
+Overfull \hbox (24.88025pt too wide) in paragraph at lines 302--303
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (30.88031pt too wide) in paragraph at lines 287--288
+Overfull \hbox (30.88031pt too wide) in paragraph at lines 307--308
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
-[7]
-
-LaTeX Warning: Citation `jour:B2BServices' on page 8 undefined on input line 34
-2.
-
-
-LaTeX Warning: Citation `proc:TheWebMLApproach' on page 8 undefined on input li
-ne 342.
+[8]
+Overfull \hbox (5.12709pt too wide) in paragraph at lines 364--365
+[][][]\OT1/cmr/m/n/10 If you delete the IPE with the vari-able-Name e, the bind
+-ing lo-ca-tion <- e.location
+ []
 
 
-LaTeX Warning: Citation `book:umlatwork' on page 8 undefined on input line 342.
+Overfull \hbox (42.88043pt too wide) in paragraph at lines 379--380
+[][][][][][][][][][][][][][][][][] 
+ []
 
 
-
-LaTeX Warning: Citation `incoll:ErhardKonrad1992' on page 8 undefined on input 
-line 342.
-
-
-LaTeX Warning: Citation `man:BPEL' on page 8 undefined on input line 342.
+Overfull \hbox (30.88031pt too wide) in paragraph at lines 386--387
+[][][][][][][][][][][][][][][][][] 
+ []
 
 
-LaTeX Warning: Citation `phdthesis:manuelWimmer' on page 8 undefined on input l
-ine 342.
+Overfull \hbox (84.88086pt too wide) in paragraph at lines 387--388
+[][][][][][][][][][][][][][][][][][][] 
+ []
 
 
-LaTeX Warning: Citation `mast:AUMLProfile' on page 8 undefined on input line 34
-2.
+Overfull \hbox (30.88031pt too wide) in paragraph at lines 388--389
+[][][][][][][][][][][][][][][][][] 
+ []
+
+[9]
+
+LaTeX Warning: Citation `jour:B2BServices' on page 10 undefined on input line 4
+25.
 
 
-LaTeX Warning: Citation `misc:BIGWebsite' on page 8 undefined on input line 342
+LaTeX Warning: Citation `proc:TheWebMLApproach' on page 10 undefined on input l
+ine 425.
+
+
+LaTeX Warning: Citation `book:umlatwork' on page 10 undefined on input line 425
 .
 
-(./seminarpaper.bbl) [8] (./seminarpaper.aux)
+
+LaTeX Warning: Citation `incoll:ErhardKonrad1992' on page 10 undefined on input
+ line 425.
+
+
+LaTeX Warning: Citation `man:BPEL' on page 10 undefined on input line 425.
+
+
+LaTeX Warning: Citation `phdthesis:manuelWimmer' on page 10 undefined on input 
+line 425.
+
+
+LaTeX Warning: Citation `mast:AUMLProfile' on page 10 undefined on input line 4
+25.
+
+
+LaTeX Warning: Citation `misc:BIGWebsite' on page 10 undefined on input line 42
+5.
+
+(./seminarpaper.bbl) [10] (./seminarpaper.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -952,13 +986,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 17046 strings out of 493109
- 326897 string characters out of 6138587
- 425927 words of memory out of 5000000
- 20170 multiletter control sequences out of 15000+600000
+ 17052 strings out of 493109
+ 327100 string characters out of 6138587
+ 427935 words of memory out of 5000000
+ 20175 multiletter control sequences out of 15000+600000
  14059 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,23n,66p,684b,1107s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,23n,66p,684b,1515s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
 live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2014
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2014/texmf-dis
@@ -972,10 +1006,10 @@ m/cmr6.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
 mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2014/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2014/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmtt9.pfb>
-Output written on seminarpaper.pdf (10 pages, 462158 bytes).
+Output written on seminarpaper.pdf (12 pages, 498569 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
+ 113 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 43 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 

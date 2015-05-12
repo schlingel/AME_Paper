@@ -7,10 +7,10 @@
 \contentsline {section}{\numberline {3}Implementation}{6}
 \contentsline {subsection}{\numberline {3.1}Transformations}{6}
 \contentsline {subsubsection}{Binding}{6}
-\contentsline {subsubsection}{Out Pattern Element}{7}
+\contentsline {subsubsection}{Out Pattern Element}{8}
 \contentsline {subsubsection}{In Pattern Element}{8}
-\contentsline {subsection}{\numberline {3.2}Related transformation}{8}
-\contentsline {section}{\numberline {4}Conclusion}{8}
-\contentsline {section}{\numberline {5}Bibliographic Issues}{8}
-\contentsline {subsection}{\numberline {5.1}Literature Search}{8}
-\contentsline {subsection}{\numberline {5.2}BibTeX}{8}
+\contentsline {subsection}{\numberline {3.2}Related transformation}{10}
+\contentsline {section}{\numberline {4}Conclusion}{10}
+\contentsline {section}{\numberline {5}Bibliographic Issues}{10}
+\contentsline {subsection}{\numberline {5.1}Literature Search}{10}
+\contentsline {subsection}{\numberline {5.2}BibTeX}{10}

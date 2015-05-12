@@ -331,6 +331,69 @@ bindingNewFirst : ATL!Binding (
 
 \textbf{Deletion}
 
+To delete an InPatternElement it is not enough to delete only the InPatternElement itself. You have to deal at least with one important effect. The usage of this InPatternElement in the Bindings of the OutPatternElements.
+For better understanding this problem, I will give a short example.
+
+\begin{lstlisting}
+rule PNMLDocument {
+	from
+		e : PetriNet!PetriNet,
+		f : PetriNet!PetriNet
+	to	
+		n : PNML!PNMLDocument
+		(
+			location <- e.location,
+			xmlns <- uri,
+			nets <- net			
+		)
+\end{lstlisting}
+
+\begin{lstlisting}
+rule PNMLDocument {
+	from
+		f : PetriNet!PetriNet
+	to	
+		n : PNML!PNMLDocument
+		(
+			location <- .location,
+			xmlns <- uri,
+			nets <- net			
+		)
+\end{lstlisting}
+
+If you delete the IPE with the variableName e, the binding location <- e.location will have an unreferredVariable in its value part. So the generated model is not valid any more. To avoid this, you have to delete all bindings with unreferred variables in a second step of your high order transformations.
+
+The implementation of the deletion of an IPE looks like this:
+\begin{lstlisting}
+rule DelteIPE {
+  from ipe : ATL!InPatternElement (
+    ipe.inPattern.elements -> size() > 1 and
+    ipe = ipe.inPattern.elements -> last()
+  )
+\end{lstlisting}
+
+The following deletion of Binding is realized with this code:
+\begin{lstlisting}
+rule DelteNavigationBinding{
+from b : ATL!Binding(
+	b.value.oclIsTypeOf(ATL!NavigationOrAttributeCallExp) and 
+	b.value.source.referredVariable.oclIsUndefined()
+)
+to
+}
+rule DeleteCollectionBinding{
+from b:ATL!Binding(		
+	b.value.oclIsTypeOf(ATL!CollectionOperationCallExp) and 
+	b.value.source.oclIsTypeOf(ATL!NavigationOrAttributeCallExp) and 
+	b.value.source.source.referredVariable.oclIsUndefined()
+)
+to
+}
+\end{lstlisting}
+
+First of all you need to know, that there are several types of possible binding values - the CollectionOperationCallExp and the NavigationOrAttributeCallExp.
+As they have a different strucutre and to deal with both of them. you have to write two rules to delete the corresponding bindings.
+
 \textbf\textit{{Implementation}}
 
 \textbf\textit{{Discussion}}

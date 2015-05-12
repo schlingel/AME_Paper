@@ -1,7 +1,17 @@
 1. binding - value change -> all Strings to "hello" --> ok
-2. binding - value change -> switch String values
+2. binding - value change -> switch String values --> ok
 3. binding - add -> if for a value no binding is done, add
 4. out pattern element -> class change -> all to 1 specific class
 5. out pattern element -> add
-6. in pattern element -> delete if more than one
+6. in pattern element -> delete if more than one --> ok
 7. in pattern element -> class change -> first to an other class
+
+ad 3. Aufpassen was man als Value übergibt. Wenn Attribute Type (z.b. String) dann einfach,
+wenn Reference Type (b <- c1.a) muss ich wissen, dass es eine andere rule gibt, die class2 auf type2 mapped --> OCL-Part vom Metamodel (NavigationOrAttributeCollExp)
+add binding: type of b (type2) is first outpatternelement von einer anderen rule mit type of inpatternelemetn C1.
+Ich muss schauen wie ich von c1 zu c2 komme (über a)
+2 Teile: 1. Generic HOT (irgendein String in c1.a), 2. Second Order Hot - restliche transformation
+
+ad 6: delete also bindings with this IPE
+
+ad 7. aufpassen auf bindings. Ändern auf eine Subclass, dann braucht man nicht aufpassen ob die bindings noch existieren
