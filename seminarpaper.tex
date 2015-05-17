@@ -61,9 +61,22 @@ This abstract summarizes the content of this paper in about 70 to 150 words. \do
 
 \section{Introduction}
 
-The broader goal of this work is to create an introduction to a specific field of software testing. Software testing is a process, or a series processes engineered to check if a program does what it is designed to do and that id does not do anything unintended.\cite{Myers:2004} Model based testing (MBT) is a variant of testing. Test cases are not written by the programmer directly. The programmer creates a model of the requirements and in a second step the test cases are generated on base of the model.\cite{Utting:2012}
+The broader goal of this work is to create an introduction to a specific field of model driven engineering (MDE). Integral part of MDE is model transformation.\cite{Sendall:2003}. Model transformation allows to synthesize software artifacts from model definitions and ease other software engineering tasks by automating them.
+
+This abstraction eases incremental processes like:\cite{Sendall:2003}
+\begin{itemize}
+	\item Reverse engineering models e.g. in the process of replacing a legacy system . Then the resulting artifact can be tested and if results of the legacy and the new system are found only the model has to be changed.
+	\item Refactoring models
+	\item et cetera
+\end{itemize}
+
+Therefore the quality of the overall software solution is determined by the quality of the models and the resulting model transformations.\cite{Hutchinson:2011} As a consequence testing the transformations for correctness is a essential part of the quality of the software.\cite{troya:2015}
+
+To check the quality of software is has to be tested. Software testing is a process, or a series processes engineered to check if a program does what it is designed to do and that id does not do anything unintended.\cite{Myers:2004} Model based testing (MBT) is a variant of testing. Test cases are not written by the programmer directly. The programmer creates a model of the requirements and in a second step the test cases are generated on base of the model.\cite{Utting:2012}
 
 Mutation testing is a fault-based testing technique. It applys changes to the input and creates a mutant. A mutant represents a faulty program. In the best case these changes, which are applied by the mutator, represent mistakes a programmer would make.\cite{mutationssurvey:yue}
+
+\section{Background}
 
 The basic idea is of mutation testing is not to test the resulting software itself but the test cases. Good test cases should be able to identify mutants. Identifying means recognizing differing results of the original system under test (SUT) or mutants.\cite{MatMottu2006}
 
@@ -106,7 +119,6 @@ This report show what additional transformation have been developed and what the
 	\label{fig:Marked_Mutation_Process}
 \end{figure}
 
-\section{Background}
 
 Model transformations play an important role in the Model Driven Engineering
 (MDE) approach. Developing model transformation definitions is expected to
