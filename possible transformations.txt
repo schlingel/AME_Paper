@@ -7,7 +7,8 @@
 7. in pattern element -> class change -> first to an other class
 
 ad 3. Aufpassen was man als Value übergibt. Wenn Attribute Type (z.b. String) dann einfach,
-wenn Reference Type (b <- c1.a) muss ich wissen, dass es eine andere rule gibt, die class2 auf type2 mapped --> OCL-Part vom Metamodel (NavigationOrAttributeCollExp)
+wenn Reference Type (b <- c1.a) muss ich wissen, dass es eine andere rule gibt, die class2 auf type2 mapped
+ --> OCL-Part vom Metamodel (NavigationOrAttributeCollExp)
 add binding: type of b (type2) is first outpatternelement von einer anderen rule mit type of inpatternelemetn C1.
 Ich muss schauen wie ich von c1 zu c2 komme (über a)
 2 Teile: 1. Generic HOT (irgendein String in c1.a), 2. Second Order Hot - restliche transformation
@@ -15,3 +16,39 @@ Ich muss schauen wie ich von c1 zu c2 komme (über a)
 ad 6: delete also bindings with this IPE
 
 ad 7. aufpassen auf bindings. Ändern auf eine Subclass, dann braucht man nicht aufpassen ob die bindings noch existieren
+
+
+
+
+
+AddBiding - beim bisher implementierten - man muss noch überprüfen, ob das binding was man vom supertyp auswählt
+auch ein StringExp ist, da man sonst ein ungültiges model erzeugt wenn man dem binding als value eine StringExp zuweist.
+
+Was wir auch machen sollen beim AddBinding - das was er unbedingt haben will (ist glaub ich der wichtigste Punkt für ihn)
+Wir sollen das ganze mit dem Beispiel, dass er uns beim letzten mal aufgezeichnet ausprobieren.
+Also ein einfaches Metamodel:
+ C1 --> T1
+ |	|
+ |a	|b
+ v 	v
+ C2 --> T2
+Wir sollen also ein Binding hinzufügen, dass als Attribute Type einen Reference Type hat (also z.B. from c1 to t1 mit binding b <- c1.a
+Dazu muss man eine andere rule suchen, die c2 auf t2 mapped ( --> OCL-Part vom Metamodel (NavigationOrAttributeCollExp))
+Vorgehen: ich suche eine rule, welche als ersten OPE T2 hat, dann such ich mir aus dieser Liste von rules eine rule, die als IPE C2 hat.
+Dann muss ich mir raussuchen wie ich von C1 zu C2 komme, also über a 
+Das ganze muss man mit einer HOT und einer Second Order HOT machen.
+Zuerst mach ich das generische HOT wo ich b <- 'irgendeinString' mache, und dann im Second Order HOT muss ich mir dann den wirklichen Typ suchen und den String ersetzen.
+
+Als Beispiel mit welchem Model wir das machen können, können wir entweder das einfache c1/c2/t1/t2 Model von seiner Zeichnung nehmen
+oder in seinem PetriNet Metamodel  das binding target <- irgendwas vom ARC nehmen.
+
+Beim DeleteBindingAfterIPE müssen wir noch in einer Rekursion durchgehen, dass auch wirklich alle Expressions die die Variable vom gelöschten IPE (in unserem Beispiel wars e)enthalten auch gelöscht werden. 
+Derzeit funktioniert es nur mit normalen irgendwas <- e oder irgendwas <- e.variable oder irgendwas <- e.elements -> union(e.arcs)
+Bei verschachtelten Expressions funktioniert es noch nicht also z.B. irgendwas <- e.elements -> select (f | f.name = e)
+Ich denke das sollte sich mit einer Rekursion lösen lassen. Also irgendwas so in der Art -> prüfen wenn b.value.source.oclIsTypeOf (ATL!NavigationOrAttributeCallExp oder CollectionOperationExp) dann fang wieder von vorne an..
+
+Beim Class Change von einem IPE kann man zu Anfang mal auf eine Subclass ändern, dann braucht man sich keine Gedanken machen, ob die Bindings die vorher existieirt haben noch immer existieren.
+Wenn man eine komplett andere Klasse nicht, muss man die Bindings alle überprüfen, was glaub ich ziemlich aufwändig ist.
+
+Hinzufügen von einem OPE sollte denk ich nicht soo viel Aufwand sein. Ich glaube da muss man nur über Second Order HOTs sich eine Klasse raussuchen, dies im Output Metamodel gibt und die dann hinzufügen.
+Als Zusatzaufgabe kann man das dann mit unserem AddBinding kombinieren - nur da muss man halt wieder auf die Typen aufpassen.
