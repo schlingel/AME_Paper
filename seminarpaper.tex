@@ -142,10 +142,9 @@ This report show what additional transformation have been developed and what the
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{figures/Marked_Mutation_Process}
-	\caption{The mutation testing workflow contains a feedback loop.\cite{MatMottu2006}}
+	\caption{The mutation testing workflow contains a feedback loop. The red marked area is the part this paper contributes to.\cite{MatMottu2006}}
 	\label{fig:Marked_Mutation_Process}
 \end{figure}
-
 
 Model transformations play an important role in the Model Driven Engineering
 (MDE) approach. Developing model transformation definitions is expected to
@@ -159,8 +158,6 @@ Model transformation is an important technique in software development, espacial
 ATL is a model transformation language containing a mixture of declarative and
 imperative constructs. ATL is applied in the context of the
 transformation pattern shown in \label{fig:overview_atl}. In this pattern a source model Ma is transformed into a target model Mb according to a transformation definition mma2mmb.atl written in the ATL language. The transformation definition is a model conforming to the ATL metamodel. All metamodels conform to the MOF.
-ATL is a hybrid transformation language. It contains a mixture of declarative
-and imperative constructs. We encourage a declarative style of specifying transformations. The declarative style of transformation specification has a number of advantages. It is usually based on specifying relations between source and target patterns and thus tends to be closer to the way the developers intuitively perceive a transformation. This style stresses on encoding these relations and hides the details related to selection of source elements, rule triggering and ordering, dealing with traceability, etc. Therefore, it can hide complex transformation algorithms behind a simple syntax.\cite{atl:frederic}
 
 \begin{figure}
 	\centering
@@ -169,12 +166,17 @@ and imperative constructs. We encourage a declarative style of specifying transf
 	\label{fig:overview_atl}
 \end{figure}~\cite{atl:frederic}
 
+ATL is a hybrid transformation language. It contains a mixture of declarative
+and imperative constructs. It is encouraged to use a declarative style of specifying transformations. The declarative style of transformation specification has a number of advantages. It is usually based on specifying relations between source and target patterns and thus tends to be closer to the way the developers intuitively perceive a transformation. This style stresses on encoding these relations and hides the details related to selection of source elements, rule triggering and ordering, dealing with traceability, etc. Therefore, it can hide complex transformation algorithms behind a simple syntax.\cite{atl:frederic}
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Class_metamodel.jpg}
 	\caption{Class metamodel}
 	\label{fig:class_metamodel_atl}
-\end{figure}~\cite{atl:frederic}
+\end{figure}~
+
+The class metamodel is used by the following ATL transformation\ref{lst:shortexample} to create model of the relational metamodel\ref{fig:relational_metamodel_atl}\cite{atl:frederic}
 
 \begin{figure}
 	\centering
@@ -193,13 +195,13 @@ rule EntityModel2FormModel {
 		em : Forms!EntityModel
 	to 
 		fm : Forms!FormModel (
+			name <- em.name
 		)
 }
 //End Program
 \end{lstlisting}
 
-The ATL transformation in \ref{lst:shortexample} shows a tranformation Entities2Form. The source model is the 'IN'
-model and the target model is 'OUT'. The rule mapped the elements EntityModel to FormModel.
+The source model is the 'IN' model and the target model is 'OUT'. The rule mapped the elements EntityModel to FormModel.
 
 \subsubsection{Higher Order Transformations}
 
