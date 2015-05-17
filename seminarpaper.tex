@@ -250,7 +250,36 @@ transformations.\label{fig:mutations_ATL}
 	\label{fig:mutations_ATL}
 \end{figure}~\cite{troya:2015}
 
+In the column \textit{Consequences} of
+\label{fig:mutations_ATL} there are some notices about the
+consequences of a mutation. In the referenced paper \cite{troya:2015} the
+consequences descripted as follows:
+When a transformation is mutated, it has an effect in the output model that is
+generated for the same input model as with the original
+transformation. 
+There can be completely new objects that were not present before (OA: Object
+Addition). Some objects can be deleted (OD: Object Deletion). There can also be
+objects that are modified. They are labeled as OPI: Object Property
+Initialized or OPN: Object Property set to Null. That means that a property of
+an obejct is initialized or is set to null. Another possibility is when the
+value of a property of an object is modified (OPM:
+Object Property Modified). Or another case is
+that an object has replaced (OR: Object Replacement). For OR: Object
+Replacement it is important to know that Object Replacemnt can also be seen as
+the deletion and addition of an object. The relationships can also be added (RA:
+Relationship Added) or deleted (RD: Relationship Deleted).\cite{troya:2015}
 
+For our implemented solutions the consequences OPI: Object Property
+Initialized, OPN: Object Property set to Null, OPM:
+Object Property Modified, OA: Object
+Addition, OR: Object Replacement and OD: Object Deletion are important. In case
+of relationships we have to know that the modification of an object implies
+automatically the modifictions of relationships and that is why also RA:
+Relationship Added or RD: Relationship Deleted are important for our implemented
+solutions.
+
+In the section \textit{Mutations implementation} we explained the implemented
+solutions. 
 
 \section{Mutations implementation}
 
