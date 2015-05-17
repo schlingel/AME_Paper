@@ -177,22 +177,34 @@ model and the target model is 'OUT'. The rule mapped the elements EntityModel to
 FormModel. 
 
 
-\subsubsection{High Order Transformations}
+\subsubsection{Higher Order Transformations}
 
-Higher order transformations is a model transformation such that its input and/or output models are themselves transformation models.\cite{Tisi:2009}
+Higher order transformations are defined as a model transformation such that
+its input and/or output models are themselves transformation models.\cite{Tisi:2009}
+
+In the following figure a sample schema of a HOT for transformation modification
+in ATL is shown. The figure show a good overview for the model transformation
+such that its input/output models are themselves transformation models.
+
+ \begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/HOT.pdf}
+	\caption{Sample schema of a HOT for transformation modification in ATL}
+	\label{fig:samplefigure_pdf}
+\end{figure}~\cite{misc:ModelingLanguages}
 
 Therefore a transformation model is:
 
 \begin{itemize}
-	\item The input of a HOT
-	\item The output of a HOT
+	\item The input of a Higher order transformation
+	\item The output of a Higher order transformation
 	\item Or it is both
 \end{itemize}
 
-Tisi et. al identified four transformation patterns for HOTs:
+Tisi et. al identified four transformation patterns for Higher order transformations:
 
 \begin{itemize}
-	\item \textbf{Transformation Synthesis} These HOTs generate transformations. If any input is used it's not a transformation.
+	\item \textbf{Transformation Synthesis} These Higher order transformations generate transformations. If any input is used it's not a transformation.
 	\item \textbf{Transformation Analysis} take transformations as input and generate data of different kinds as output. The output is never a transformation.
 	\item \textbf{Transformation (De)composition} is the integration of multiple transformations of the input and/or integration of transformations as output.
 	\item \textbf{Transformation Modification} is defined by modifing an input transformation and generating an output transformation.
@@ -200,14 +212,25 @@ Tisi et. al identified four transformation patterns for HOTs:
 
 The focus of this work is on \textit{Transformation Modifications} (short TM). 
 
-\subsection{Mutations in Model Transformations}
+Another possibility of a Higher order transformation is a second Higher order
+transformation. That means that a Higher order transformation be also the
+input/output of another transformation.
 
-\begin{figure}[tb]
+\subsection{Mutations in Model Transformations}
+In order to identify the possibility of mutations in languages we have to know
+about the concepts of the languages can be mutated. This mutation possibilities
+are presented in the referenced paper \cite{troya:2015}. For a better overview
+in the following figure there are presented the possible mutations for ATL
+transformations.\label{fig:mutations_ATL}
+
+ \begin{figure}[tb]
 	\centering
-	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/HOT.png}
-	\caption{Sample schema of a HOT for transformation modification in ATL}
-	\label{fig:samplefigure_pdf}
-\end{figure}~\cite{misc:ModelingLanguages}
+	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Mutations_Identified_for_ATL.pdf}
+	\caption{Mutations Identified for ATL transformations}
+	\label{fig:mutations_ATL}
+\end{figure}~\cite{troya:2015}
+
+
 
 \section{Mutations implementation}
 
