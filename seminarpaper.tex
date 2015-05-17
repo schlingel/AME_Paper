@@ -45,8 +45,15 @@ Mustergasse 54/4/3, 1030 Wien \\ \email{matthias@tuwien.ac.at} \\ MatrNr.: 04265
 \maketitle
 
 \begin{abstract}
-
-This abstract summarizes the content of this paper in about 70 to 150 words. \dots
+Faults in model transformations will produce faults in models. The correction of
+the defect models are often very expensive. This result affecting the quality of
+the end product. This is why model transformations have to be correctly tested
+to maintain product quality. For that mutation testing is a popular technique. 
+The mutation testing of model transformations have to be developed and for this
+a suite of mutation operators for the Atlas Transformation language (ATL) are
+needed. In this paper a set of mutation operators are implemented and the
+solution of the implementation is discussed and evaluated regarding
+effectiveness.\dots
 \end{abstract}
 
 %&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -565,13 +572,14 @@ other papers with different approaches.
 
 
 \section{Conclusion and future work}
-In this paper we have implemented some solutions regarding mutations in ATL. We
-have selected some mutations in ATL like Binding (Addtion, Deletion and Change),
-In Pattern Element (Addition, Class change) and Out Pattern Element (Deletion,
-Class change). In the paper we have explain the effect of the mutations of
-transformtions and we see that there are many consequences. The approach
-presented in this paper aims at mutation of model transformations for building
-trust into model transformation programs using this technique.
+In this paper we have implemented some solutions regarding mutations in ATL. 
+The implementation of a set of mutation operators is discussed and evaluated
+regarding effectiveness. We have selected some mutations in ATL like Binding
+(Addtion, Deletion and Change), In Pattern Element (Addition, Class change) and
+Out Pattern Element (Deletion, Class change). In the paper we have explain the
+effect of the mutations of transformtions and we see that there are many
+consequences. The approach presented in this paper aims at mutation of model
+transformations for building trust into model transformation programs using this technique.
 Further work will consist in deveolpment of tools for autmated mutations of
 model transformations. First only for ATL and second for other model
 transformation languages for example like QVT.
