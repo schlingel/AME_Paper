@@ -1,0 +1,182 @@
+\def\filedate{2006/05/16}
+\def\fileversion{1.02}
+\ProvidesPackage{AMMALanguages}
+             [\filedate\space\fileversion\space(Davide Di Ruscio and Frédéric Jouault)]
+\typeout{}
+\typeout{----------------------}
+\typeout{AMMA Languages Formatting Package}
+\typeout{----------------------}
+\typeout{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{listings}
+\usepackage{color}
+%\usepackage{xspace}
+%\usepackage{amsmath}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+
+\definecolor{gray}{rgb}{0.94,0.94,0.94}
+\definecolor{blue}{rgb}{0,0,0.5}
+%\lstloadlanguages{HTML,XML}
+\lstset{
+ % backgroundcolor=\color{gray},
+  breaklines=true,
+  frame=single,
+  framerule=0pt,
+  language=,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showtabs=false,
+  tabsize=4,
+%%AV20110131 change to smaller font (see below as well)
+%  basicstyle=\ttfamily\small,
+  basicstyle=\ttfamily\scriptsize,
+  %identifierstyle=\scriptsize,
+%  identifierstyle=\ttfamily\small,
+  identifierstyle=\ttfamily\scriptsize, %\bfseries,
+  numberstyle=\ttfamily\scriptsize
+%%%%%%%%%%%%%%%%%%%%AV20110131
+}
+
+
+
+\definecolor{keywordColor}{rgb}{.5, 0, .33}
+%\definecolor{keywordColor}{rgb}{0, 0, 0}
+\definecolor{commentColor}{rgb}{0, .3, 0}
+\definecolor{backgroundColor}{rgb}{.9, .9, .9}
+\definecolor{emphColor}{rgb}{.16, 0, 1}
+\definecolor{numberColor}{rgb}{.09, .62, .28}
+  %[breaklines,mathescape,rulesepcolor=\color{black}]
+\lstdefinestyle{AMMA}{
+        backgroundcolor=\color{backgroundColor},
+%%AV20110131 change to smaller font (see above as well)
+%       basicstyle=\small,
+        basicstyle=\scriptsize,
+%%%%%%%%%%%%AV20110131
+%        keywordstyle=\color{[rgb]{.5, 0, .33}}\bfseries,
+        keywordstyle=\color{keywordColor}\bfseries,
+        stringstyle=\color{blue}\ttfamily,
+%       commentstyle=\color{[rgb]{0, 0.5, 0}}\ttfamily,
+        commentstyle=\color{commentColor}\ttfamily,
+        emphstyle=\color{emphColor},
+%       numberstyle=\color{numberColor},
+        tabsize=2,
+        frame=,
+        breaklines=true,
+%       postbreak={(*@$\hookrightarrow$@*)},
+%       postbreak={(*@$\nearrow$@*)},
+%       postbreak=\mbox{{\color{red}\tiny$\rightarrow$}},
+        postbreak=\mbox{{\color{red}\scriptsize$\hookrightarrow$}},
+}
+\lstdefinelanguage{TCS}{
+        morekeywords={main,template,isDefined,addToContext,primitiveTemplate,for,default,using,context},
+        morekeywords={operators,priority,operatorTemplate,source,storeOpTo,storeRightTo},
+        morekeywords={symbols,leftSpace,rightSpace,leftNone,rightNone},
+        morekeywords={nbNL,indentIncr},
+        morekeywords={as,refersTo,separator},
+        sensitive=true,
+        morecomment=[l]{--},
+        morestring=[b]",
+}
+
+\lstdefinelanguage{KM3}{
+        morekeywords={package,class,oppositeOf,container,ordered,abstract,extends,reference,attribute,enumeration,literal,datatype},
+        emph={Boolean,Integer,String},
+        sensitive=true,
+        morecomment=[l]{--},
+        morestring=[b]",
+}
+
+\lstdefinelanguage{ATL}{
+        morekeywords={abstract,rule,module,from,to,create,uses, using, do, helper, def, unique, lazy, not, refining, and, if, then, else, endif, path, context, extends, thisModule},
+        emph={Boolean, Integer, String, Sequence, not, true, false},
+        sensitive=true,
+        morecomment=[l]{--},
+        morestring=[b]',
+        keywordstyle=\color{keywordColor}\bfseries,
+        commentstyle=\itshape\color{mygreen},
+}
+
+\lstdefinelanguage{ANTLR}{
+        morekeywords={},
+% we use emph for (some) terminals
+        emph={LCURLY,RCURLY,NAME},
+        sensitive=true,
+        morecomment=[l]{//},
+        morestring=[b]",
+}
+
+\lstdefinelanguage{SPL}{
+        morekeywords={service,processing,registration,return,forward,incoming},
+        emph={uri,response},
+        sensitive=true,
+        morecomment=[l]{//},
+        morestring=[b]',
+}
+
+\lstdefinelanguage{XASM}{
+        morekeywords={asm,endasm,is,choose,in,do,forall,and,or,then,endchoose,enddo,if,endif,then,universes,universe,function,
+ exists,not,extend,endextend},
+        emph={Boolean,Integer,String,Sequence},
+        sensitive=true,
+        morecomment=[l]{--},
+        morestring=[b]',
+}
+
+\lstdefinelanguage{ASP}{
+        morekeywords={node, prop, edge, not, relation, nodet, edget, propt, metanode, metaprop, metaedge},
+        sensitive=true,
+        morecomment=[l]{//},
+        morestring=[b]',
+}
+
+\lstdefinelanguage{Maude}{
+        morekeywords={fmod, endfm, mod, omod, tmod, endm, endom, endtm, is, pr, protecting, crl, rl},
+        morekeywords={op, ops, eq, ceq, sort, sorts, class, subsort, subsorts, subclass, subclasses, vars, var, if},
+        morekeywords={Maude, result, cmb, then, else, fi, =>},
+        sensitive=true,
+        morecomment=[l]{---},
+        morestring=[b]",
+}
+
+\lstdefinelanguage{OCL20}{
+        %morekeywords={context, inv, body, if, then, else, endif, post, body, pre, forAll, exists, collect, union, not, xor},
+        %morekeywords={size, allInstances, select, asSet, iterate, collect, sum, asBag, notEmpty, isEmpty, implies, and, or},
+        %morekeywords={includesAll, includes, excludes, including, concat, isOclType, oclIsUndefined, derive, init, let, in},
+        %morekeywords={any, one, at},
+        emph={Boolean, Integer, String, Sequence, Bag, self, Set, Tuple, null, result},
+        sensitive=true,
+        morecomment=[l]{--},
+        morestring=[b]',
+        commentstyle=\itshape\color{mygreen},
+}
+
+\lstdefinelanguage{ASSL}{
+        morekeywords={context, inv, body, if, then, else, endif, post, body, pre, forAll, exists, collect, union, not, xor},
+        morekeywords={size, allInstances, select, asSet, iterate, collect, sum, asBag, notEmpty, isEmpty, implies, and, or},
+        morekeywords={includesAll, includes, excludes, including, concat, isOclType, oclIsUndefined, derive, init, let, in},
+        morekeywords={for, begin, Create, Insert, Any, Try, end, procedure},
+        morekeywords={any, one, at},
+        morekeywords={Boolean, Integer, String, Sequence, Bag, self, Set, Tuple, null, result},
+        sensitive=true,
+        morecomment=[l]{--},
+        morestring=[b]',
+}
+
+
+\lstdefinelanguage{REPO}{
+        morekeywords={OK, KO},
+        emph={Boolean, Integer, String, Sequence, Bag, self, Set, Tuple, null, result},
+        sensitive=true,
+        morecomment=[l]{--},
+        morestring=[b]',
+        commentstyle=\itshape\color{mygreen},
+}
+
+
+
+
+\endinput

@@ -1,4 +1,4 @@
-	\documentclass{llncs}
+\documentclass{llncs}
 
 \usepackage{url}
 \usepackage[pdftex]{graphicx}
@@ -15,6 +15,8 @@
 \usepackage[ngerman, english]{babel}
 \usepackage{bibgerm,cite}       % Deutsche Bezeichnungen, Automatisches Zusammenfassen von Literaturstellen
 \usepackage[ngerman]{varioref}  % Querverweise
+
+\usepackage{ammalang}
 
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{3}
@@ -45,15 +47,8 @@ Mustergasse 54/4/3, 1030 Wien \\ \email{matthias@tuwien.ac.at} \\ MatrNr.: 04265
 \maketitle
 
 \begin{abstract}
-Faults in model transformations will produce faults in models. The correction of
-the defect models are often very expensive. This result affecting the quality of
-the end product. This is why model transformations have to be correctly tested
-to maintain product quality. For that mutation testing is a popular technique. 
-The mutation testing of model transformations have to be developed and for this
-a suite of mutation operators for the Atlas Transformation language (ATL) are
-needed. In this paper a set of mutation operators are implemented and the
-solution of the implementation is discussed and evaluated regarding
-effectiveness.\dots
+
+This abstract summarizes the content of this paper in about 70 to 150 words. \dots
 \end{abstract}
 
 %&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -115,7 +110,9 @@ We contribute further implementations of mutation operators and small tests.
 
 \section{Background}
 
-The basic idea is of mutation testing is not to test the resulting software itself but the test cases. Good test cases should be able to identify mutants. Identifying means recognizing differing results of the original system under test (SUT) or mutants.\cite{MatMottu2006}
+This work is focused on mutation testing for model transformations. The basic idea of mutation testing in software engineering is not to test the resulting software itself but the test cases.
+
+Good test cases should be able to identify mutants. In he jargon of mutation testing the mutations are \emph{killed}. Killing means recognizing differing results of the original system under test (SUT) and tested mutants.\cite{MatMottu2006}
 
 The process of mutation testing consists of these components:
 \begin{itemize}
@@ -124,13 +121,6 @@ The process of mutation testing consists of these components:
 	\item The \textit{mutants} of P.
 	\item An \textit{oracle} which is able to decides if results differ and which is therefore able to identify mutants.
 \end{itemize}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\textwidth]{figures/Mutation_Process}
-	\caption{The mutation testing workflow contains a feedback loop.\cite{MatMottu2006}}
-	\label{fig:Mutation_Process}
-\end{figure}
 
 The goal of the process\ref{fig:Mutation_Process} is to \textit{kill} or identify faulty versions of P. If a mutant outputs the same data as the P for the same input data it's called \textit{equivalent}. In this case this mutant has to removed from the set of mutants under test.
 
@@ -175,26 +165,25 @@ and imperative constructs. We encourage a declarative style of specifying transf
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Overview_ATL.jpg}
-	\caption{Overview of the ATL transformational approach}\cite{atl:frederic}
+	\caption{Overview of the ATL transformational approach}
 	\label{fig:overview_atl}
-\end{figure}
+\end{figure}~\cite{atl:frederic}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Class_metamodel.jpg}
-	\caption{Class metamodel}\cite{atl:frederic}
+	\caption{Class metamodel}
 	\label{fig:class_metamodel_atl}
-\end{figure}
+\end{figure}~\cite{atl:frederic}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Relational_metamodel.jpg}
-	\caption{Relational metamodel}\cite{atl:frederic}
+	\caption{Relational metamodel}
 	\label{fig:relational_metamodel_atl}
-\end{figure}
+\end{figure}~\cite{atl:frederic}
 
-In the following you can see a short example of a ATL transformation:
-\begin{verbatim}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=Simple example for a ATL transformation, label=lst:shortexample]
 //Start Program
 module Entities2Forms;
 create OUT : Forms from IN : Forms;
@@ -207,12 +196,10 @@ rule EntityModel2FormModel {
 		)
 }
 //End Program
-\end{verbatim}
+\end{lstlisting}
 
-This ATL file shows a tranformation Entities2Form. The source model is the 'IN'
-model and the target model is 'OUT'. The rule mapped the elements EntityModel to
-FormModel. 
-
+The ATL transformation in \ref{lst:shortexample} shows a tranformation Entities2Form. The source model is the 'IN'
+model and the target model is 'OUT'. The rule mapped the elements EntityModel to FormModel.
 
 \subsubsection{Higher Order Transformations}
 
@@ -226,10 +213,9 @@ such that its input/output models are themselves transformation models.
  \begin{figure}[tb]
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/HOT.pdf}
-	\caption{Sample schema of a HOT for transformation modification in
-	ATL}\cite{misc:ModelingLanguages}
+	\caption{Sample schema of a HOT for transformation modification in ATL}
 	\label{fig:samplefigure_pdf}
-\end{figure}
+\end{figure}~\cite{misc:ModelingLanguages}
 
 Therefore a transformation model is:
 
@@ -252,8 +238,7 @@ The focus of this work is on \textit{Transformation Modifications} (short TM).
 
 Another possibility of a Higher order transformation is a second Higher order
 transformation. That means that a Higher order transformation be also the
-input/output of another transformation. There exists also Third order
-transformations and so on.
+input/output of another transformation.
 
 \subsection{Mutations in Model Transformations}
 In order to identify the possibility of mutations in languages we have to know
@@ -310,7 +295,7 @@ Deleting a Binding is very uncomplicated comparativeley to other mutation operat
 To delete a binding you only have to choose a binding in the from part of the ATL transformation and let the "to"-part be empty.
 The following example deletes  all bindings.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=Definition of Delete-Binding., label=lst:delete]
 rule DeleteBinding{
   from b: ATL!Binding
   to
@@ -328,7 +313,7 @@ As we don't know this in our High Order Transformation, we have to do a step in 
 As a first step we have to implement our High Order Transformation. To know, where we later have to replace the propertyName, we now set the propertyName to a dummy value like "NewBindingPropertyName".
 In Order to have the binding not duplicated, we need to filter our OutPatternElements to only choose the ones wich don't already have the binding with the dummy propertyName.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=AddBinding-Definition, label=lst:addbinding]
 rule AddBinding{
   from 
   ope : ATL!OutPatternElement ( 
@@ -353,7 +338,7 @@ This dummy value will be replaced in the Second Order HOT.
 We search in our ATL Metamodel for all StringExpressions with our dummy value and replace it with a new value.
 To get this new value we search for our general supertype in our metamodel. From this supertype we can now choose an attribute (called EStructuralFeature), which we can add to all of the subtypes.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=AddBindingNames-Definition., label=lst:addbindingnames]
 rule AddBindingNames {
 from b : ATL!StringExp (
     b.stringSymbol = 'NewBinding_PropertyName'
@@ -383,7 +368,7 @@ There are two types of major types of binding values in the ATL metamodel:
 	\item Variable Expressions
 \end{itemize}
 
-The primitive expressions are directly assignable in the ATL rules. Variable expressions have to be composed from the available objects in the metamodel. (See \ref{fig:atl_metamodel_excerpt})
+The primitive expressions are directly assignable in the ATL rules. Variable expressions have to be composed from the available objects in the metamodel. (See \ref{fig:atl_mm_excerpt})
 
 \begin{figure}
 	\centering
@@ -396,7 +381,7 @@ The first example shows how to change the value of all String Expressions. The o
 
 To achieve this, we first have to search for all bindings with the value type "ATL!StringExp" and set this value to our defined string value.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=ValueChangeBinding-Definition., label=lst:valuechangebinding]
 rule ValueChangeBinding_All{
 	from
 	 b : ATL!Binding (b.value.oclIsTypeOf(ATL!StringExp))
@@ -412,7 +397,7 @@ rule ValueChangeBinding_All{
 
 As an extension to this approach, in a second step we want to overwrite all String expressions to the first String value of the input model. This only make sense, if we have more than one string expression, so we added a condition to do this.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=ValueChangeBinding-Definition using same constant string value., label=lst:vcbconstant]
 rule ValueChangeBinding_AllSameStringValue{
 	from
 	 b : ATL!Binding(
@@ -439,7 +424,7 @@ As outPatternElement and propertyName we take the original outPatternElement and
 
 Important to achieve correct values is, that we use the original binding list from the "from"-clause of the rule.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=ValueChangeBinding-Definition using values from input models., label=lst:2ndOrderHOT]
 rule ValueChangeBinding_Switch{
 from
 ope : ATL!OutPatternElement (
@@ -489,9 +474,10 @@ bindingNewFirst : ATL!Binding (
 \textbf{Deletion}
 
 To delete an InPatternElement it is not enough to delete only the InPatternElement itself. You have to deal at least with one important effect. The usage of this InPatternElement in the Bindings of the OutPatternElements.
+
 For better understanding this problem, I will give a short example.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex]
 rule PNMLDocument {
 	from
 		e : PetriNet!PetriNet,
@@ -505,7 +491,7 @@ rule PNMLDocument {
 		)
 \end{lstlisting}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex]
 rule PNMLDocument {
 	from
 		f : PetriNet!PetriNet
@@ -521,7 +507,7 @@ rule PNMLDocument {
 If you delete the IPE with the variableName e, the binding location <- e.location will have an unreferredVariable in its value part. So the generated model is not valid any more. To avoid this, you have to delete all bindings with unreferred variables in a second step of your high order transformations.
 
 The implementation of the deletion of an IPE looks like this:
-\begin{lstlisting}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex]
 rule DelteIPE {
   from ipe : ATL!InPatternElement (
     ipe.inPattern.elements -> size() > 1 and
@@ -530,7 +516,7 @@ rule DelteIPE {
 \end{lstlisting}
 
 The following deletion of Binding is realized with this code:
-\begin{lstlisting}
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex]
 rule DelteNavigationBinding{
 from b : ATL!Binding(
 	b.value.oclIsTypeOf(ATL!NavigationOrAttributeCallExp) and 
@@ -564,26 +550,8 @@ As they have a different strucutre and to deal with both of them. you have to wr
 Explain what we did and why.
 
 \section{Related work}
-In the related work \cite{troya:2015} the authors have identified the mutations
-for ATL transformation language as in chapter \textit{Mutations in Model
-Transformations} descripted. We have implemented a set of possible mutations in
-AATl they have identified. For the general part of the paper we have read some
-other papers with different approaches.
-
 
 \section{Conclusion and future work}
-In this paper we have implemented some solutions regarding mutations in ATL. 
-The implementation of a set of mutation operators is discussed and evaluated
-regarding effectiveness. We have selected some mutations in ATL like Binding
-(Addtion, Deletion and Change), In Pattern Element (Addition, Class change) and
-Out Pattern Element (Deletion, Class change). In the paper we have explain the
-effect of the mutations of transformtions and we see that there are many
-consequences. The approach presented in this paper aims at mutation of model
-transformations for building trust into model transformation programs using this technique.
-Further work will consist in deveolpment of tools for autmated mutations of
-model transformations. First only for ATL and second for other model
-transformation languages for example like QVT.
-
 
 \section{Bibliographic Issues}
 
