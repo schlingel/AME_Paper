@@ -74,7 +74,27 @@ Therefore the quality of the overall software solution is determined by the qual
 
 To check the quality of software is has to be tested. Software testing is a process, or a series processes engineered to check if a program does what it is designed to do and that id does not do anything unintended.\cite{Myers:2004} Model based testing (MBT) is a variant of testing. Test cases are not written by the programmer directly. The programmer creates a model of the requirements and in a second step the test cases are generated on base of the model.\cite{Utting:2012}
 
-Mutation testing is a fault-based testing technique. It applys changes to the input and creates a mutant. A mutant represents a faulty program. In the best case these changes, which are applied by the mutator, represent mistakes a programmer would make.\cite{mutationssurvey:yue}
+Mutation testing or mutation analysis is a fault-based testing technique. It applys changes to the input and creates a mutant. A mutant represents a faulty program. In the best case these changes, which are applied by the mutator, represent mistakes a programmer would make. It has been proven that mutation testing is useful as testing approach but also as:\cite{mutationssurvey:yue}
+
+\begin{enumerate}
+	\item Generate input models as test data.
+	\item Generate mutants of model transformations.
+\end{enumerate}
+
+\subsection{Problem}
+
+To make mutation testing an effective testing method a complete set of mutation operators and a large number of mutated model transformations. Due to the needed size of the sets it's to expensive to create them manually. Additionally the execution of the different models against the test data is a time-consuming.
+
+Therefore automation is required for:
+
+\begin{enumerate}
+	\item The generation of a set of mutation operators.
+	\item The generation of mutated model transformations.
+\end{enumerate}
+
+Furthermore, the computational costs of the executions have to be lowered.
+
+\subsection{Contribution}
 
 \section{Background}
 
