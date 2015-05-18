@@ -156,7 +156,16 @@ In this part of the paper we want to explain the basics of the requirements we n
 
 Speaking in broader terms, model transformation is the process of synthesizing one or models from one or more input models. To successfully generate output-models it takes a clear understanding of syntax and semantic of the models and the relationship between their different entities. Model driven engineering provides a formal framework to define this prerequirements.\cite{Sendall:2003}
 
-Model transformation is an important technique in software development, espacially in Model-Driven Software Development (MDSD) and Model-Driven Software Development (MDA). There exists different types of model transformations like Model-To-Model Transformation and Model-To-Text Transformation.  
+At the high level exist two categories of model transformations:\cite{Czarnecki03}
+
+\begin{enumerate}
+	\item Model to model transformations.
+	\item Model to code transformations.
+\end{enumerate}
+
+Model to code transformations take models as input and generate source code as output. There exist two different approaches to synthesize the source code. There exists the visitor based approach, which is driven by a model traverse engine which outputs code artifacts when it visits specific points in the model hierarchy.
+
+The alternative to the visitor based approach is the template based appraoch. A template consists of constant text and parts which dynamically generate text from the input model. The dynamically part expands iterativly.\cite{Czarnecki03}
 
 \subsubsection{ATL}
 ATL is a model transformation language containing a mixture of declarative and
