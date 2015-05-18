@@ -163,11 +163,20 @@ At the high level exist two categories of model transformations:\cite{Czarnecki0
 	\item Model to code transformations.
 \end{enumerate}
 
-Model to code transformations take models as input and generate source code as output. There exist two different approaches to synthesize the source code. There exists the visitor based approach, which is driven by a model traverse engine which outputs code artifacts when it visits specific points in the model hierarchy.
+Model to code transformations take models as input and generate source code as output. There exist two different approaches to synthesize the source code. There exists the visitor based approach, which is driven by a model traverse engine which outputs code artifacts when it visits specific points in the model hierarchy. The alternative to the visitor based approach is the template based appraoch. A template consists of constant text and parts which dynamically generate text from the input model. The dynamically part expands iterativly.\cite{Czarnecki03}
 
-The alternative to the visitor based approach is the template based appraoch. A template consists of constant text and parts which dynamically generate text from the input model. The dynamically part expands iterativly.\cite{Czarnecki03}
+There are multiple strategies for model to model transformations:
+
+\begin{itemize}
+	\item \emph{Direct-manipulation approache} offers a internal model representation and tools to manipulate it.
+	\item The \emph{relational approache} uses relations, in the sense of the mathematical concept, and mapping rules. In combination with a declerative logic, for defining constraints, this is used to produce executable transformations.
+	\item The \emph{graph-transformations-based approache} utilizes graph theory, modelling model entities as nodes and edges in the graph, to define model transformations.
+	\item The \emph{structure-driven approache} provides the user with a framework to operate on a hierarchy to copy objects and their attributes.
+	\item The combination of two or more concepts is called \emph{hybrid approache}.
+\end{itemize}
 
 \subsubsection{ATL}
+
 ATL is a model transformation language containing a mixture of declarative and
 imperative constructs. ATL is applied in the context of the
 transformation pattern shown in \label{fig:overview_atl}. In this pattern a source model Ma is transformed into a target model Mb according to a transformation definition mma2mmb.atl written in the ATL language. The transformation definition is a model conforming to the ATL metamodel. All metamodels conform to the MOF.
@@ -194,9 +203,9 @@ The class metamodel is used by the following ATL transformation\ref{lst:shortexa
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Relational_metamodel.jpg}
-	\caption{Relational metamodel}
+	\caption{Relational metamodel\cite{atl:frederic}}
 	\label{fig:relational_metamodel_atl}
-\end{figure}~\cite{atl:frederic}
+\end{figure}~
 
 \begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=Simple example for a ATL transformation, label=lst:shortexample]
 //Start Program
@@ -272,12 +281,9 @@ transformations.\label{fig:mutations_ATL}
 In the column \textit{Consequences} of
 \label{fig:mutations_ATL} there are some notices about the
 consequences of a mutation. In the referenced paper \cite{troya:2015} the
-consequences descripted as follows:
-When a transformation is mutated, it has an effect in the output model that is
-generated for the same input model as with the original
-transformation. 
-There can be completely new objects that were not present before (OA: Object
-Addition). Some objects can be deleted (OD: Object Deletion). There can also be
+consequences descripted as follows: When a transformation is mutated, it has an effect in the output model that is generated for the same input model as with the original transformation. 
+
+There can be completely new objects that were not present before (OA: Object Addition). Some objects can be deleted (OD: Object Deletion). There can also be
 objects that are modified. They are labeled as OPI: Object Property
 Initialized or OPN: Object Property set to Null. That means that a property of
 an obejct is initialized or is set to null. Another possibility is when the
