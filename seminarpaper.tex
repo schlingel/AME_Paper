@@ -303,14 +303,30 @@ automatically the modifictions of relationships and that is why also RA:
 Relationship Added or RD: Relationship Deleted are important for our implemented
 solutions.
 
-In the section \textit{Mutations implementation} we explained the implemented
-solutions. 
+\section{Mutations implemented}
 
-\section{Mutations implementation}
+The overall goal of this work is to implement seven transformations. This are defined in \ref{tbl:goals} and show the current status of the work.
+
+\begin{table}[h]
+\begin{tabular}{llll}
+\textbf{Nr.} & \textbf{Concept}    & \textbf{Mutation operator} & \textbf{Status} \\
+1            & Binding             & Value change               & Done            \\
+2            & Binding             & Value change               & Done            \\
+3            & Binding             & Add                        &                 \\
+4            & Out pattern element & Class change               &                 \\
+5            & Out pattern element & Add                        &                 \\
+6            & In pattern element  & Deletion                   & Done            \\
+7            & In pattern element  & Class change               &                
+\label{tbl:goals}
+\end{tabular}
+\caption{The implementation goals}
+\end{table}
 
 \subsection{Binding}
 
-\textbf{Deletion}
+Bindings define how attributes of output models are set.
+
+\subsubsection{Deletion}
 
 Deleting a Binding is very uncomplicated comparativeley to other mutation operations.
 To delete a binding you only have to choose a binding in the from part of the ATL transformation and let the "to"-part be empty.
@@ -323,7 +339,7 @@ rule DeleteBinding{
 }
 \end{lstlisting}
 
-\textbf{Addition}
+\subsubsection{Addition}
 
 \textbf\textit{{Implementation}}
 
@@ -375,12 +391,6 @@ to b2 : ATL!StringExp (
 )	
 }
 \end{lstlisting}
-
-\textbf\textit{{Discussion}}
-
-\textbf{Change}
-
-\textbf\textit{{Implementation}}
 
 There are two types of major types of binding values in the ATL metamodel:
 
@@ -474,25 +484,7 @@ bindingNewFirst : ATL!Binding (
 }
 \end{lstlisting}
 
-\textbf\textit{{Discussion}}
-
-\subsubsection{Out Pattern Element}
-
-\textbf{Addition}
-
-\textbf\textit{{Implementation}}
-
-\textbf\textit{{Discussion}}
-
-\textbf{Class change}
-
-\textbf\textit{{Implementation}}
-
-\textbf\textit{{Discussion}}
-
-\subsubsection{In Pattern Element}
-
-\textbf{Deletion}
+\subsubsection{Deletion}
 
 To delete an InPatternElement it is not enough to delete only the InPatternElement itself. You have to deal at least with one important effect. The usage of this InPatternElement in the Bindings of the OutPatternElements.
 
@@ -557,18 +549,6 @@ to
 
 First of all you need to know, that there are several types of possible binding values - the CollectionOperationCallExp and the NavigationOrAttributeCallExp.
 As they have a different strucutre and to deal with both of them. you have to write two rules to delete the corresponding bindings.
-
-\textbf\textit{{Implementation}}
-
-\textbf\textit{{Discussion}}
-
-\textbf{Class change}
-
-\textbf\textit{{Implementation}}
-
-\textbf{Discussion}
-
-Explain what we did and why.
 
 \section{Related work}
 In the related work \cite{troya:2015} the authors have identified the mutations for ATL transformation language as in chapter \textit{Mutations in Model Transformations} descripted. We have implemented a set of possible mutations in AATl they have identified. For the general part of the paper we have read some other papers with different approaches.
