@@ -48,7 +48,8 @@ Mustergasse 54/4/3, 1030 Wien \\ \email{matthias@tuwien.ac.at} \\ MatrNr.: 04265
 
 \begin{abstract}
 
-This abstract summarizes the content of this paper in about 70 to 150 words. \dots
+Faults in model transformations will produce faults in models. The correction of the defect models are often very expensive. This result affecting the quality of the end product. This is why model transformations have to be correctly tested to maintain product quality. For that mutation testing is a popular technique.  The mutation testing of model transformations have to be developed and for this a suite of mutation operators for the Atlas Transformation language (ATL) are needed. In this paper a set of mutation operators are implemented and the solution of the implementation is discussed and evaluated regarding effectiveness
+
 \end{abstract}
 
 %&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -152,6 +153,9 @@ become a common task in model driven software development. \cite{atl:frederic}
 In this part of the paper we want to explain the basics of the requirements we needed for Mutations for and with ATL Model Transformations.
 
 \subsection{Model transformation in MDE}
+
+Speaking in broader terms, model transformation is the process of synthesizing one or models from one or more input models. To successfully generate output-models it takes a clear understanding of syntax and semantic of the models and the relationship between their different entities. Model driven engineering provides a formal framework to define this prerequirements.\cite{Sendall:2003}
+
 Model transformation is an important technique in software development, espacially in Model-Driven Software Development (MDSD) and Model-Driven Software Development (MDA). There exists different types of model transformations like Model-To-Model Transformation and Model-To-Text Transformation.  
 
 \subsubsection{ATL}
@@ -552,8 +556,10 @@ As they have a different strucutre and to deal with both of them. you have to wr
 Explain what we did and why.
 
 \section{Related work}
+In the related work \cite{troya:2015} the authors have identified the mutations for ATL transformation language as in chapter \textit{Mutations in Model Transformations} descripted. We have implemented a set of possible mutations in AATl they have identified. For the general part of the paper we have read some other papers with different approaches.
 
 \section{Conclusion and future work}
+In this paper we have implemented some solutions regarding mutations in ATL. The implementation of a set of mutation operators is discussed and evaluated regarding effectiveness. We have selected some mutations in ATL like Binding (Addtion, Deletion and Change), In Pattern Element (Addition, Class change) and Out Pattern Element (Deletion, Class change). In the paper we have explain the effect of the mutations of transformtions and we see that there are many consequences. The approach presented in this paper aims at mutation of model transformations for building trust into model transformation programs using this technique. Further work will consist in deveolpment of tools for autmated mutations of model transformations. First only for ATL and second for other model transformation languages for example like QVT.
 
 \section{Bibliographic Issues}
 
