@@ -80,7 +80,9 @@ Therefore the quality of the overall software solution is determined by the qual
 
 To check the quality of software is has to be tested. Software testing is a process, or a series processes engineered to check if a program does what it is designed to do and that id does not do anything unintended.\cite{Myers:2004} Model based testing (MBT) is a variant of testing. Test cases are not written by the programmer directly. The programmer creates a model of the requirements and in a second step the test cases are generated on base of the model.\cite{Utting:2012}
 
-Mutation testing or mutation analysis is a fault-based testing technique. It applys changes to the input and creates a mutant. A mutant represents a faulty program. In the best case these changes, which are applied by the mutator, represent mistakes a programmer would make. It has been proven that mutation testing is useful as testing approach but also as:\cite{mutationssurvey:yue}
+Mutation testing or mutation analysis is a fault-based testing technique. It
+applies changes to the input and creates a mutant. A mutant represents a faulty
+program. In the best case these changes, which are applied by the mutator, represent mistakes a programmer would make. It has been proven that mutation testing is useful as testing approach but also as:\cite{mutationssurvey:yue}
 
 \begin{enumerate}
 	\item Generate input models as test data.
@@ -106,7 +108,7 @@ Javier et. al. contributed three aspects.
 
 \begin{enumerate}
 	\item They have defined a general languagecentric synthesis approach by defining a set of mutation operators based on ATL. 
-	\item They made a concept and build a first version of a framework utilizing HOTs for generating mutants.\cite{Paige:2009}
+	\item They made a concept and build a first version of a framework utilizing Higher order transformations for generating mutants.\cite{Paige:2009}
 	\item Integrated techniques\cite{Bergmayr:2014} for incremental model transformation execution in their framework.
 \end{enumerate}
 
@@ -157,6 +159,8 @@ Model transformations play an important role in the Model Driven Engineering
 become a common task in model driven software development. \cite{atl:frederic}
 In this part of the paper we want to explain the basics of the requirements we needed for Mutations for and with ATL Model Transformations.
 
+\subsection{Mutation Testing}
+
 Speaking in broader terms, model transformation is the process of synthesizing one or models from one or more input models. To successfully generate output-models it takes a clear understanding of syntax and semantic of the models and the relationship between their different entities. Model driven engineering provides a formal framework to define this prerequirements.\cite{Sendall:2003}
 
 At the high level exist two categories of model transformations:\cite{Czarnecki03}
@@ -187,7 +191,7 @@ transformation pattern shown in \label{fig:overview_atl}. In this pattern a sour
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Overview_ATL.jpg}
-	\caption{Overview of the ATL transformational approach}
+	\caption{Overview of the ATL transformational approach}\cite{atl:frederic}
 	\label{fig:overview_atl}
 \end{figure}~\cite{atl:frederic}
 
@@ -196,7 +200,7 @@ ATL is a hybrid transformation language. It is encouraged to use a declarative s
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Class_metamodel.pdf}
-	\caption{Class metamodel}
+	\caption{Class metamodel}\cite{atl:frederic}
 	\label{fig:class_metamodel_atl}
 \end{figure}
 
@@ -206,7 +210,7 @@ shown in Listing \ref{fig:relational_metamodel_atl}\cite{atl:frederic}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Relational_metamodel.jpg}
-	\caption{Relational metamodel\cite{atl:frederic}}
+	\caption{Relational metamodel}\cite{atl:frederic}
 	\label{fig:relational_metamodel_atl}
 \end{figure}
 
@@ -238,16 +242,17 @@ The source model is the 'IN' model and the target model is 'OUT'. The rule mappe
 Higher order transformations are defined as a model transformation such that
 its input and/or output models are themselves transformation models.\cite{Tisi:2009}
 
-In the following figure a sample schema of a HOT for transformation modification
+In the following figure a sample schema of a Higher order transformation for transformation modification
 in ATL is shown. The figure show a good overview for the model transformation
 such that its input/output models are themselves transformation models.
 
  \begin{figure}[tb]
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/HOT.pdf}
-	\caption{Sample schema of a HOT for transformation modification in ATL}
+	\caption{Sample schema of a Higher Order Transformations for transformation modification in
+	ATL}\cite{misc:ModelingLanguages}
 	\label{fig:samplefigure_pdf}
-\end{figure}~\cite{misc:ModelingLanguages}
+\end{figure}
 
 Therefore a transformation model is:
 
@@ -257,7 +262,8 @@ Therefore a transformation model is:
 	\item Or it is both
 \end{itemize}
 
-Tisi et. al identified four transformation patterns for Higher order transformations:
+Tisi et. al \cite{Tisi:2009} identified four transformation patterns for Higher
+order transformations:
 
 \begin{itemize}
 	\item \textbf{Transformation Synthesis} These Higher order transformations
@@ -273,7 +279,7 @@ Another possibility of a Higher order transformation is a second Higher order
 transformation. That means that a Higher order transformation be also the
 input/output of another transformation.
 
-\subsection{Mutations in Model Transformations}
+\subsubsection{Mutations in Model Transformations}
 In order to identify the possibility of mutations in languages we have to know
 about the concepts of the languages can be mutated. This mutation possibilities
 are presented in the referenced paper \cite{troya:2015}. For a better overview
@@ -397,7 +403,7 @@ rule DeleteBinding{
 
 To add a binding is not that easy it seems on the first view.
 As we cannot add any binding to an OutPatternElement, we need to know what possible properties the actual class has.
-As we don't know this in our High Order Transformation, we have to do a step in between and afterwards do a Second Order HOT to replace the properyName of the binding with an correct propertyName.
+As we don't know this in our High Order Transformation, we have to do a step in between and afterwards do a Second Order Higher Order Transformations to replace the properyName of the binding with an correct propertyName.
 
 As a first step we have to implement our High Order Transformation. To know, where we later have to replace the propertyName, we now set the propertyName to a dummy value like "NewBindingPropertyName".
 In Order to have the binding not duplicated, we need to filter our OutPatternElements to only choose the ones wich don't already have the binding with the dummy propertyName.
@@ -423,7 +429,7 @@ rule AddBinding{
 }
 \end{lstlisting}
 
-This dummy value will be replaced in the Second Order HOT.
+This dummy value will be replaced in the Second Order Higher Order Transformations.
 We search in our ATL Metamodel for all StringExpressions with our dummy value and replace it with a new value.
 To get this new value we search for our general supertype in our metamodel. From this supertype we can now choose an attribute (called EStructuralFeature), which we can add to all of the subtypes.
 
