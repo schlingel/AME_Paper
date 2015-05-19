@@ -149,7 +149,7 @@ This report show what additional transformation have been developed and what the
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{figures/Marked_Mutation_Process}
+	\includegraphics[width=0.7\textwidth]{figures/Marked_Mutation_Process.pdf}
 	\caption{The mutation testing workflow contains a feedback loop. The red marked area is the part this paper contributes to.\cite{MatMottu2006}}
 	\label{fig:Marked_Mutation_Process}
 \end{figure}
@@ -186,14 +186,15 @@ There are multiple strategies for model to model transformations:
 
 ATL is a model transformation language containing a mixture of declarative and
 imperative constructs. ATL is applied in the context of the
-transformation pattern shown in \label{fig:overview_atl}. In this pattern a source model Ma is transformed into a target model Mb according to a transformation definition mma2mmb.atl written in the ATL language. The transformation definition is a model conforming to the ATL metamodel. All metamodels conform to the MOF.
+transformation pattern shown in \ref{fig:overview_atl}. In this pattern a source
+model Ma is transformed into a target model Mb according to a transformation definition mma2mmb.atl written in the ATL language. The transformation definition is a model conforming to the ATL metamodel. All metamodels conform to the MOF.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Overview_ATL.jpg}
+	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Overview_ATL.pdf}
 	\caption{Overview of the ATL transformational approach}\cite{atl:frederic}
 	\label{fig:overview_atl}
-\end{figure}~\cite{atl:frederic}
+\end{figure}
 
 ATL is a hybrid transformation language. It is encouraged to use a declarative style of specifying transformations. The declarative style of transformation specification has a number of advantages. It is usually based on specifying relations between source and target patterns and thus tends to be closer to the way the developers intuitively perceive a transformation. This style stresses on encoding these relations and hides the details related to selection of source elements, rule triggering and ordering, dealing with traceability, etc. Therefore, it can hide complex transformation algorithms behind a simple syntax.\cite{atl:frederic}
 
@@ -209,15 +210,15 @@ shown in Listing \ref{fig:relational_metamodel_atl}\cite{atl:frederic}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Relational_metamodel.jpg}
+	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Relational_metamodel.pdf}
 	\caption{Relational metamodel}\cite{atl:frederic}
 	\label{fig:relational_metamodel_atl}
 \end{figure}
 
 In this part we want to create a transformation program for a general example
 that transform simple class models to relational models. The source and the
-target model are presented in \label{fig:class_metamodel_atl} and
-\label{fig:relational_metamodel_atl}.
+target model are presented in \ref{fig:class_metamodel_atl} and
+\ref{fig:relational_metamodel_atl}.
 
 \begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=Simple example for a ATL transformation, label=lst:shortexample]
 //Start Program
@@ -457,11 +458,11 @@ There are two types of major types of binding values in the ATL metamodel:
 	\item Variable Expressions
 \end{itemize}
 
-The primitive expressions are directly assignable in the ATL rules. Variable expressions have to be composed from the available objects in the metamodel. (See \ref{fig:atl_mm_excerpt})
+The primitive expressions are directly assignable in the ATL rules. Variable expressions have to be composed from the available objects in the metamodel. (See \ref{fig:atl_metamodel_excerpt})
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/ATL_Metamodel_Excerpt}
+	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/ATL_Metamodel_Excerpt.pdf}
 	\caption{Excerpt of the ATL metamodel}
 	\label{fig:atl_metamodel_excerpt}
 \end{figure}~
@@ -609,7 +610,29 @@ First of all you need to know, that there are several types of possible binding 
 As they have a different strucutre and to deal with both of them. you have to write two rules to delete the corresponding bindings.
 
 \section{Related work}
-In the related work \cite{troya:2015} the authors have identified the mutations for ATL transformation language as in chapter \textit{Mutations in Model Transformations} descripted. We have implemented a set of possible mutations in AATl they have identified. For the general part of the paper we have read some other papers with different approaches.
+In the related work \cite{troya:2015} the authors has identified the mutations
+for ATL transformation language as in chapter \textit{Mutations in Model Transformations} descripted. We have implemented a set of possible mutations in AATl they have identified. For the general part of the paper we have read some other papers with different approaches.
+In another referenced work \cite{book:KhanHassine} the authors has researched
+how it is possible to support mutation testing in the atlas transformation
+language. The authors has defined a set of mutation operators. This operators
+are:
+
+\begin{itemize}
+	\item Matched to Lazy (M2L)
+	\item Lazy to Matched (L2M)
+	\item Delete Attribute Mapping (DAM)
+	\item Add Attribute Mapping (AAM)
+	\item Delete Filtering Expression (DFE)
+	\item Add Filtering Expression (AFE)
+	\item Change Source Type (CST)
+	\item Change Target Type (CTT)
+	\item Delete Return Statement (DRS)
+	\item Delete Use Statement (DUS)
+	\item Change Execution Mode (CEM)
+\end{itemize}
+
+The autohors approach has been validated and the results have shown that their
+defined operators successfully detected insufficiency in the test suite.
 
 \section{Conclusion and future work}
 The broader goal of this work is to create an introduction to a specific field
