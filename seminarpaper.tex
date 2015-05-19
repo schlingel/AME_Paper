@@ -48,7 +48,10 @@ Mustergasse 54/4/3, 1030 Wien \\ \email{matthias@tuwien.ac.at} \\ MatrNr.: 04265
 
 \begin{abstract}
 
-Faults in model transformations will produce faults in models. The correction of the defect models are often very expensive. This result affecting the quality of the end product. This is why model transformations have to be correctly tested to maintain product quality. For that mutation testing is a popular technique.  The mutation testing of model transformations have to be developed and for this a suite of mutation operators for the Atlas Transformation language (ATL) are needed. In this paper a set of mutation operators are implemented and the solution of the implementation is discussed and evaluated regarding effectiveness
+Faults in model transformations will produce faults in models. The correction of
+the defective models is often very expensive. This result affects the quality
+of the end product. This is why model transformations has to be correctly tested
+to maintain product quality. For that mutation testing is a popular technique.  The mutation testing of model transformations have to be developed and for this a suite of mutation operators for the Atlas Transformation language (ATL) is needed. In this paper a set of mutation operators are implemented and the solution of the implementation is discussed and evaluated regarding effectiveness
 
 \end{abstract}
 
@@ -64,7 +67,7 @@ Faults in model transformations will produce faults in models. The correction of
 
 \section{Introduction}
 
-The broader goal of this work is to create an introduction to a specific field of model driven engineering (MDE). Integral part of MDE is model transformation.\cite{Sendall:2003}. Model transformation allows to synthesize software artifacts from model definitions and ease other software engineering tasks by automating them.
+Model transformation allows to synthesize software artifacts from model definitions and ease other software engineering tasks by automating them.
 
 This abstraction eases incremental processes like:\cite{Sendall:2003}
 \begin{itemize}
@@ -111,6 +114,8 @@ We contribute further implementations of mutation operators and small tests.
 
 \section{Background}
 
+\subsection{Model transformation in MDE}
+
 This work is focused on mutation testing for model transformations. The basic idea of mutation testing in software engineering is not to test the resulting software itself but the test cases.
 
 Good test cases should be able to identify mutants. In he jargon of mutation testing the mutations are \emph{killed}. Killing means recognizing differing results of the original system under test (SUT) and tested mutants.\cite{MatMottu2006}
@@ -136,7 +141,7 @@ If this value is to small the tests have to be improved.
 
 The success of this method depends on the set of mutants used in the process. Manual creation of mutants is a tedious and time consuming task. Therefore a quick, reliable and efficent creation of mutants is proposed in \cite{troya:2015}.
 
-Troya et. al. build upon ATL and higher order transformations (HOT) to create transformations to automatically generate mutants. 
+Troya et al. build upon ATL and higher order transformations (HOT) to create transformations to automatically generate mutants. 
 
 This report show what additional transformation have been developed and what their goal is. The scope of this work is only on the mutation generation in the whole process.
 
@@ -151,8 +156,6 @@ Model transformations play an important role in the Model Driven Engineering
 (MDE) approach. Developing model transformation definitions is expected to
 become a common task in model driven software development. \cite{atl:frederic}
 In this part of the paper we want to explain the basics of the requirements we needed for Mutations for and with ATL Model Transformations.
-
-\subsection{Model transformation in MDE}
 
 Speaking in broader terms, model transformation is the process of synthesizing one or models from one or more input models. To successfully generate output-models it takes a clear understanding of syntax and semantic of the models and the relationship between their different entities. Model driven engineering provides a formal framework to define this prerequirements.\cite{Sendall:2003}
 
@@ -188,36 +191,41 @@ transformation pattern shown in \label{fig:overview_atl}. In this pattern a sour
 	\label{fig:overview_atl}
 \end{figure}~\cite{atl:frederic}
 
-ATL is a hybrid transformation language. It contains a mixture of declarative
-and imperative constructs. It is encouraged to use a declarative style of specifying transformations. The declarative style of transformation specification has a number of advantages. It is usually based on specifying relations between source and target patterns and thus tends to be closer to the way the developers intuitively perceive a transformation. This style stresses on encoding these relations and hides the details related to selection of source elements, rule triggering and ordering, dealing with traceability, etc. Therefore, it can hide complex transformation algorithms behind a simple syntax.\cite{atl:frederic}
+ATL is a hybrid transformation language. It is encouraged to use a declarative style of specifying transformations. The declarative style of transformation specification has a number of advantages. It is usually based on specifying relations between source and target patterns and thus tends to be closer to the way the developers intuitively perceive a transformation. This style stresses on encoding these relations and hides the details related to selection of source elements, rule triggering and ordering, dealing with traceability, etc. Therefore, it can hide complex transformation algorithms behind a simple syntax.\cite{atl:frederic}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Class_metamodel.jpg}
+	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Class_metamodel.pdf}
 	\caption{Class metamodel}
 	\label{fig:class_metamodel_atl}
-\end{figure}~
+\end{figure}
 
-The class metamodel is used by the following ATL transformation\ref{lst:shortexample} to create model of the relational metamodel\ref{fig:relational_metamodel_atl}\cite{atl:frederic}
+The class metamodel is used by the ATL transformation \ref{lst:shortexample}
+shown in Listing \ref{fig:relational_metamodel_atl}\cite{atl:frederic}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Relational_metamodel.jpg}
 	\caption{Relational metamodel\cite{atl:frederic}}
 	\label{fig:relational_metamodel_atl}
-\end{figure}~
+\end{figure}
+
+In this part we want to create a transformation program for a general example
+that transform simple class models to relational models. The source and the
+target model are presented in \label{fig:class_metamodel_atl} and
+\label{fig:relational_metamodel_atl}.
 
 \begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=Simple example for a ATL transformation, label=lst:shortexample]
 //Start Program
-module Entities2Forms;
-create OUT : Forms from IN : Forms;
+module Class2Relational;
+create OUT : Relational from IN : Class;
 
-rule EntityModel2FormModel {
+rule Class2Table {
 	from
-		em : Forms!EntityModel
+		c : Class!Class
 	to 
-		fm : Forms!FormModel (
-			name <- em.name
+		out : Relational!Table (
+			name <- c.name
 		)
 }
 //End Program
@@ -252,7 +260,8 @@ Therefore a transformation model is:
 Tisi et. al identified four transformation patterns for Higher order transformations:
 
 \begin{itemize}
-	\item \textbf{Transformation Synthesis} These Higher order transformations generate transformations. If any input is used it's not a transformation.
+	\item \textbf{Transformation Synthesis} These Higher order transformations
+	generate transformations. If any input is used it is not a transformation.
 	\item \textbf{Transformation Analysis} take transformations as input and generate data of different kinds as output. The output is never a transformation.
 	\item \textbf{Transformation (De)composition} is the integration of multiple transformations of the input and/or integration of transformations as output.
 	\item \textbf{Transformation Modification} is defined by modifing an input transformation and generating an output transformation.
@@ -271,12 +280,44 @@ are presented in the referenced paper \cite{troya:2015}. For a better overview
 in the following figure there are presented the possible mutations for ATL
 transformations.\label{fig:mutations_ATL}
 
- \begin{figure}[tb]
-	\centering
-	\includegraphics[width=0.7\textwidth,natwidth=610,natheight=642]{figures/Mutations_Identified_for_ATL.pdf}
-	\caption{Mutations Identified for ATL transformations}
-	\label{fig:mutations_ATL}
-\end{figure}~\cite{troya:2015}
+newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\begin{table}[b]
+\centering
+\caption{Mutations Identified for ATL Transformations.}
+\begin{scriptsize}
+\begin{tabularx}{6.5cm}{C{1cm}|C{2.1cm}|C{1.7cm}}
+\toprule
+\textbf{Concept}&\textbf{Mutation Operator}&\textbf{Consequence}\\
+\midrule
+\multirow{3}{1cm}{\centering Matched Rule}&Addition&OA;[RA] \tabularnewline
+&Deletion&OD;[RD] \tabularnewline
+&Name Change& \tabularnewline
+\midrule
+\multirow{4}{1cm}{\centering In Pattern Element}&Addition&OA;[RA] \tabularnewline
+&Deletion&OD;[RA] \tabularnewline
+&Class Change&OD;OA;[RD];[RA] \tabularnewline
+&Name Change& \tabularnewline
+\midrule
+\multirow{3}{1cm}{\centering Filter}&Addition&OD \tabularnewline
+&Deletion&OA \tabularnewline
+&Condition Change&OA;OD \tabularnewline
+\midrule
+\multirow{4}{1cm}{\centering Out Pattern Element}&Addition&OA;[RA] \tabularnewline
+&Deletion&OD;[RD] \tabularnewline
+&Class Change&OR;[RA];[RD] \tabularnewline
+&Name Change& \tabularnewline
+\midrule
+\multirow{4}{1cm}{\centering Binding}&Addition&OPI;[RA] \tabularnewline
+&Deletion&OPN;[RD] \tabularnewline
+&Value Change&OPM;[RA];[RD] \tabularnewline
+&Feature Change& \tabularnewline
+\bottomrule
+\end{tabularx}
+\end{scriptsize}
+\label{tab:mutations}
+\end{table}
+
 
 In the column \textit{Consequences} of
 \label{fig:mutations_ATL} there are some notices about the
@@ -312,7 +353,8 @@ The overall goal of this work is to implement seven transformations. This are de
 \textbf{Nr.} & \textbf{Concept}    & \textbf{Mutation operator} & \textbf{Status} \\
 1            & Binding             & Value change               & Done            \\
 2            & Binding             & Value change               & Done            \\
-3            & Binding             & Add                        &                 \\
+3            & Binding             & Addition                   &              
+\\
 4            & Out pattern element & Class change               &                 \\
 5            & Out pattern element & Add                        &                 \\
 6            & In pattern element  & Deletion                   & Done            \\
@@ -324,7 +366,17 @@ The overall goal of this work is to implement seven transformations. This are de
 
 \subsection{Binding}
 
-Bindings define how attributes of output models are set.
+Bindings define how attributes of output models are set. Bindings are used for
+two purposes:
+
+\begin{itemize}
+	\item initialization of attributes
+	\item initialization of references
+\end{itemize}
+
+The first two mutations we have implemented have to do with type initialization
+of attributes. The third mutation should be the cration of type initialization
+of references.
 
 \subsubsection{Deletion}
 
@@ -488,7 +540,7 @@ bindingNewFirst : ATL!Binding (
 
 To delete an InPatternElement it is not enough to delete only the InPatternElement itself. You have to deal at least with one important effect. The usage of this InPatternElement in the Bindings of the OutPatternElements.
 
-For better understanding this problem, I will give a short example.
+For better understanding this problem, consider the following example.
 
 \begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex]
 rule PNMLDocument {
@@ -554,7 +606,8 @@ As they have a different strucutre and to deal with both of them. you have to wr
 In the related work \cite{troya:2015} the authors have identified the mutations for ATL transformation language as in chapter \textit{Mutations in Model Transformations} descripted. We have implemented a set of possible mutations in AATl they have identified. For the general part of the paper we have read some other papers with different approaches.
 
 \section{Conclusion and future work}
-In this paper we have implemented some solutions regarding mutations in ATL. The implementation of a set of mutation operators is discussed and evaluated regarding effectiveness. We have selected some mutations in ATL like Binding (Addtion, Deletion and Change), In Pattern Element (Addition, Class change) and Out Pattern Element (Deletion, Class change). In the paper we have explain the effect of the mutations of transformtions and we see that there are many consequences. The approach presented in this paper aims at mutation of model transformations for building trust into model transformation programs using this technique. Further work will consist in deveolpment of tools for autmated mutations of model transformations. First only for ATL and second for other model transformation languages for example like QVT.
+The broader goal of this work is to create an introduction to a specific field
+of model driven engineering (MDE). Integral part of MDE is model transformation.\cite{Sendall:2003}. In this paper we have implemented some solutions regarding mutations in ATL. The implementation of a set of mutation operators is discussed and evaluated regarding effectiveness. We have selected some mutations in ATL like Binding (Addtion, Deletion and Change), In Pattern Element (Addition, Class change) and Out Pattern Element (Deletion, Class change). In the paper we have explain the effect of the mutations of transformtions and we see that there are many consequences. The approach presented in this paper aims at mutation of model transformations for building trust into model transformation programs using this technique. Further work will consist in deveolpment of tools for autmated mutations of model transformations. First only for ATL and second for other model transformation languages for example like QVT.
 
 \section{Bibliographic Issues}
 
