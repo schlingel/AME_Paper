@@ -276,9 +276,17 @@ order transformations:
 
 The focus of this work is on \textit{Transformation Modifications} (short TM). 
 
-Another possibility of a Higher order transformation is a second Higher order
-transformation. That means that a Higher order transformation will also be the
+Another possibility of a Higher order transformation is a \textit{second Higher
+order transformation}. That means that a Higher order transformation will also be the
 input/output of another transformation.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\textwidth,natwidth=610,natheight=642]{figures/SecondOrderHOT.pdf}
+	\caption{Sample schema of a Second Higher Order
+	Transformation}
+	\label{fig:second_order}
+\end{figure}
 
 \subsection{Mutations in Model Transformations}
 In order to identify the possibilities of mutations in languages we need to know
@@ -435,6 +443,68 @@ to b2 : ATL!StringExp (
 )	
 }
 \end{lstlisting}
+
+Detailed description of addbinding reference:
+For example there exists a simple meta model like shown in
+\ref{fig:simple_metamodel}.
+
+\begin{figure}
+	\centering
+	\includegraphics[angle=270,width=1\textwidth,natwidth=610,natheight=642]{figures/SimpleMM.pdf}
+	\caption{Example of a simpel metamodel}
+	\label{fig:simple_metamodel}
+\end{figure}
+
+For the next step we want create a binding reference (for example: b <- c1.a)
+first we have to search a reference from the model. For this reference it is
+important that there is no binding in the original transformation. Furthermore
+we have to save the attributes propertyName (`b`) and EType (`Type2`) of this
+binding. Then we have to search from the original transformation a rule which
+have as first OPE the `Type2` and next we have to save the type of OPE and this
+is Class2. For the next step we need a reference from the input metamodel which
+has type Class2 and save the name (`a`).
+For the first implementation of the program it was not planned that we can use
+the second order higher transformation as input for the original transformation.
+That is the reason why we can search a rule which has not the type OPE `Type2`
+in the second order higher transformation but only in the higher order
+transformation. In this context there is no access to the class names of the
+input and output model (`Type1`, `Type2`, `Class1`, `Class2`). For this missing
+access there was a adaption of Main.java (Line 69-77) necassary. It was created
+the possibility to add another input model - the original transformation
+(AddBindingReference.atl).
+
+\begin{lstlisting}[language=Java, numbers=left,xleftmargin=5.0ex,
+caption=Adaptioon of Main.java., label=lst:main] 
+/** The SecondOrderHOT takes as input, one by one, each of the generic HOTs (together with the input and
+		 * output metamodels of the transformation we want to mutate) and generates one specific mutation for each of the generic ones.
+		 * Since the generic HOTs (that serve as input) are rewritten by the in-place SecondOrderHOT, we first copy them
+		 * into the folder HOTs/specific
+		 */
+		for (String hot : HOTsGenericMutations){
+			copyFile(HOTs + "temp/" + hot + ".xmi", HOTs + "specific/" + hot + ".xmi");
+			TransfoRunnerEMFTVM tr = new TransfoRunnerEMFTVM();
+			tr.runTransformation(HOTs + "specific/" + hot + ".xmi", "ATL",
+					transformation + "temp/" + trans2Mutate + ".xmi", "IN_ATL",
+					transformation + inputMM, "IN_MM",					
+					transformation + outputMM, "OUT_MM",
+					HOTs, "SecondOrderHOT"); //path name plus module name of the transformation
+		}	
+\end{lstlisting}
+
+Furthermore a adaption of TransfoRunnerEMFTVM.java and second order higher
+transformation (line 4: IN_ATL:IN_ATL was added) was necassary.
+
+In the following figure \ref{fig:addBindingReference} we see the original
+implementation of the program and as part b in the figure we see the missing
+reference which have to be added. 
+
+\begin{figure}
+	\centering
+	\includegraphics[angle=270,width=1\textwidth,natwidth=610,natheight=642]{figures/AddBindingMissingReference.pdf}
+	\caption{AddBindingReference}
+	\label{fig:addBindingReference}
+\end{figure}
+
 
 \subsubsection{Value change}
 
