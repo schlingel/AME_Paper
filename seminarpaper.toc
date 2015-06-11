@@ -8,12 +8,12 @@
 \contentsline {subsubsection}{Higher Order Transformations}{7}
 \contentsline {subsection}{\numberline {2.3}Mutations in Model Transformations}{9}
 \contentsline {section}{\numberline {3}Mutations implemented}{10}
-\contentsline {subsection}{\numberline {3.1}Implemented binding mutations}{10}
+\contentsline {subsection}{\numberline {3.1}Implemented binding mutations}{11}
 \contentsline {subsubsection}{Deletion}{11}
-\contentsline {subsubsection}{Addition}{11}
-\contentsline {subsubsection}{Value change}{12}
-\contentsline {subsection}{\numberline {3.2}Implemented InPatternElement mutations}{14}
-\contentsline {subsubsection}{Deletion}{14}
-\contentsline {section}{\numberline {4}Related work}{15}
-\contentsline {section}{\numberline {5}Conclusion and future work}{16}
-\contentsline {section}{References}{16}
+\contentsline {subsubsection}{Addition}{12}
+\contentsline {subsubsection}{Value change}{14}
+\contentsline {subsection}{\numberline {3.2}Implemented InPatternElement mutations}{17}
+\contentsline {subsubsection}{Deletion}{17}
+\contentsline {section}{\numberline {4}Related work}{18}
+\contentsline {section}{\numberline {5}Conclusion and future work}{19}
+\contentsline {section}{References}{19}
