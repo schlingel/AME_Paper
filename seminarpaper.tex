@@ -49,10 +49,12 @@ Mustergasse 54/4/3, 1030 Wien \\ \email{matthias@tuwien.ac.at} \\ MatrNr.: 04265
 
 \begin{abstract}
 
-Faults in model transformations will produce faults in models. The correction of
-the defective models is often very expensive. This result affects the quality
-of the end product. This is why model transformations has to be correctly tested
-to maintain product quality. For this mutation testing is a popular technique.  The mutation testing of model transformations have to be developed and for this a suite of mutation operators for the Atlas Transformation language (ATL) is needed. In this paper a set of mutation operators are implemented and the solutions of the implementations are discussed and evaluated regarding effectiveness.
+Faults in model transformations will produce faults in the generated models. The
+correction of the defective models is often very expensive. This result affects the quality
+of the end product. This is why model transformations have to be correctly
+tested to maintain product quality. For this, mutation testing is a popular
+technique.  The mutation testing of model transformations has to be developed
+and for this a suite of mutation operators for the Atlas Transformation language (ATL) is needed. In this paper a set of mutation operators are implemented and the solutions of the implementations are discussed and evaluated regarding effectiveness.
 
 \end{abstract}
 
@@ -70,14 +72,16 @@ to maintain product quality. For this mutation testing is a popular technique.  
 
 Model transformation allows to synthesize software artifacts from model definitions and ease other software engineering tasks by automating them.
 
-This abstraction eases incremental processes like:\cite{Sendall:2003}
+This abstraction eases incremental processes like \footnote{Sendall:2003}:
 \begin{itemize}
 	\item Reverse engineering models e.g. in the process of replacing a legacy system. The resulting artifact can be tested and if results of the legacy and the new system are found only the model has to be changed.
 	\item Refactoring models
-	\item et cetera
 \end{itemize}
 
-Therefore the quality of the overall software solution is determined by the quality of the models and the resulting model transformations.\cite{Hutchinson:2011} As a consequence testing the transformations for correctness is an essential part to achieve the best possible quality of the software.\cite{troya:2015}
+Therefore the quality of the overall software solution is determined by the
+quality of the model transformations and the resulting
+models.\footnote{Hutchinson:2011} As a consequence testing the transformations
+for correctness is an essential part to achieve the best possible quality of the software.\cite{troya:2015}
 
 To check the quality of a software it has to be tested. Software testing is a process, or a series of engineered processes  to check if a program does what it is designed for and that it does not do anything unintended.\cite{Myers:2004} Model based testing (MBT) is a variant of this software testing process. Test cases are not written by the programmer directly. The programmer only creates a model of the requirements and in a second step the test cases are generated based on this model.\cite{Utting:2012}
 
@@ -92,7 +96,10 @@ program. In the best case these changes, which are applied by the mutator, repre
 
 \subsection{Problem}
 
-To make mutation testing an effective testing method a complete set of mutation operators and a large number of mutated model transformations has to exist. Due to the needed size of these sets it's to expensive to create them manually. Also the execution of the different models against the test data is very time-consuming.
+To make mutation testing an effective testing method a complete set of mutation
+operators and a large number of mutated model transformations have to exist. Due
+to the needed size of these sets it is too expensive to create them manually.
+Also the execution of the different models against the test data is very time-consuming.
 
 Therefore automation is required for:
 
@@ -105,11 +112,12 @@ Furthermore, the computational costs of the executions have to be lowered.
 
 \subsection{Contribution}
 
-Troya et. al. contributed three aspects.
+Troya et. al. \cite{troya:2015} contributed three aspects.
 
 \begin{enumerate}
-	\item They have defined a general languagecentric synthesis approach by defining a set of mutation operators based on ATL. 
-	\item They made a concept and build a first version of a framework utilizing Higher order transformations for generating mutants.\cite{Paige:2009}
+	\item They have defined a general language-centric synthesis approach by defining a set of mutation operators based on ATL. 
+	\item They made a concept and built a first version of a framework utilizing
+	higher-order transformations for generating mutants.\cite{Paige:2009}
 	\item They integrated techniques\cite{Bergmayr:2014} for incremental model transformation execution in their framework.
 \end{enumerate}
 
@@ -121,17 +129,21 @@ We contribute further implementations of mutation operators and small tests.
 
 This work is focused on mutation testing for model transformations. The basic idea of mutation testing in software engineering is not to test the resulting software itself but the test cases.
 
-Good test cases should be able to identify mutants. In he jargon of mutation testing the mutations are \emph{killed}. Killing means recognizing differing results of the original system under test (SUT) and tested mutants.\cite{MatMottu2006}
+Good test cases should be able to identify mutants. In the jargon of mutation
+testing the mutations are \emph{killed}. Killing means recognizing differing results of the original system under test (SUT) and tested mutants.\cite{MatMottu2006}
 
 The process of mutation testing consists of four components: 
 \begin{itemize}
 	\item \textit{Test data} as input for the original programm P and its mutants.
 	\item The original program \textit{P}
 	\item The \textit{mutants} of P.
-	\item An \textit{oracle} which is able to decides if results differ and which is therefore able to identify mutants.
+	\item An \textit{oracle} which is able to decide if results differ and which is therefore able to identify mutants.
 \end{itemize}
 
-The goal of the process\ref{fig:Mutation_Process} is to \textit{kill} or identify faulty versions of the original program. If a mutant outputs the same data for the same input data as the original program it's called \textit{equivalent}. In this case this mutant has to be removed from the set of mutants under test.
+The goal of the process, shown in Figure~\ref{fig:Marked_Mutation_Process}, is
+to \textit{kill} or identify faulty versions of the original program. If a
+mutant outputs the same data for the same input data as the original program it
+is called \textit{equivalent}. If the results are the same, then the input data has to be improved. If the results from the mutant and the original program differ, then the mutant is killed. 
 
 The last step is to assess how good the tests are and check if they should be improved. Assume \textit{KM} is the set of the killed mutants, \textit{M} is the set of all mutants and \textit{EM} is the set of all identified, equivalent mutants then the mutation score \textit{MS} is calculated like this:\cite{mutationssurvey:yue}
 
@@ -144,9 +156,13 @@ If this value is too small the tests have to be improved.
 
 The success of this method depends on the set of mutants used in the process. Manual creation of mutants is a tedious and time consuming task. Therefore a quick, reliable and efficent creation of mutants is proposed in \cite{troya:2015}.
 
-Troya et al. build upon ATL and higher order transformations (HOT) to create transformations to automatically generate mutants. 
+Troya et al. \cite{troya:2015} build upon ATL and higher order transformations
+(HOT) to create transformations to automatically generate mutants.
 
-This report shows which additional transformations have been developed and what their goals are. The scope of this work is the mutation generation in the whole process.
+This report shows which additional transformations have been developed and what
+their goals are. The scope of this work is the part of the
+figure~\ref{fig:Marked_Mutation_Process} that is marked, which deals with the
+generation of mutants for model transformations.
 
 \begin{figure}
 	\centering
@@ -155,7 +171,7 @@ This report shows which additional transformations have been developed and what 
 	\label{fig:Marked_Mutation_Process}
 \end{figure}
 
-Model transformations plays an important role in the Model Driven Engineering
+Model transformations play an important role in the Model Driven Engineering
 (MDE) approach. Developing model transformation definitions is expected to
 become a common task in model driven software development. \cite{atl:frederic}
 In this part of the paper we want to explain the basics of the requirements we needed for mutations for and with ATL Model Transformations.
@@ -171,7 +187,7 @@ At the highest level two main categories of model transformations exist:\cite{Cz
 	\item Model to code transformations
 \end{enumerate}
 
-Model to code transformations take models as input and generate source code as output. There exists two different approaches to synthesize the generated source code. On the one side there is the visitor based approach, which is driven by a model traverse engine which outputs code artifacts when it visits specific points in the model hierarchy. The other approach is the template based appraoch. Therefore a template consists of constant text and parts which dynamically generates text from the input model. The dynamically part expands iterativly.\cite{Czarnecki03}
+Model to code transformations take models as input and generate source code as output. There exists two different approaches to synthesize the generated source code. On the one side there is the visitor based approach, which is driven by a model traverse engine which outputs code artifacts when it visits specific points in the model hierarchy. The other approach is the template based approach. Therefore a template consists of constant text and parts which dynamically generate text from the input model. The dynamically part expands iterativly.\cite{Czarnecki03}
 
 
 For model to model transformations there exist multiple strategies:
@@ -194,7 +210,7 @@ model Ma is transformed into a target model Mb according to a transformation def
 \begin{figure}
 	\centering
 	\includegraphics[angle=270, width=1\textwidth,natwidth=610,natheight=642]{figures/Overview_ATL.pdf}
-	\caption{Overview of the ATL transformational approach}\cite{atl:frederic}
+	\caption{Overview of the ATL transformational approach (from~\cite{atl:frederic})}
 	\label{fig:overview_atl}
 \end{figure}
 
@@ -203,24 +219,22 @@ ATL is a hybrid transformation language. It is encouraged to use a declarative s
 \begin{figure}
 	\centering
 	\includegraphics[width=1\textwidth,natwidth=610,natheight=642]{figures/Class_metamodel.pdf}
-	\caption{Class metamodel}\cite{atl:frederic}
+	\caption{Class metamodel (from~\cite{atl:frederic})}
 	\label{fig:class_metamodel_atl}
 \end{figure}
-
-The class metamodel is used by ATL transformations \ref{lst:shortexample}
-shown in figure \ref{fig:relational_metamodel_atl}\cite{atl:frederic}
 
 \begin{figure}
 	\centering
 	\includegraphics[angle=270,width=1\textwidth,natwidth=610,natheight=642]{figures/Relational_metamodel.pdf}
-	\caption{Relational metamodel}\cite{atl:frederic}
+	\caption{Relational metamodel (from~\cite{atl:frederic})}
 	\label{fig:relational_metamodel_atl}
 \end{figure}
 
-In this part we want to create a transformation program for a general example
-that transforms simple class models to relational models. The source and the
-target model are presented in figure \ref{fig:class_metamodel_atl} and figure 
-\ref{fig:relational_metamodel_atl}.
+As an example of an ATL transformation, Listing \ref{lst:shortexample} shows an
+excerpt of the Class2Relational transformation that transforms simple class models to
+relational models. Input models are defined conforming to the class metamodel
+(cf. Figure \ref{fig:class_metamodel_atl}), while the generated output models
+conform to the relational metamodel shown in Figure \ref{fig:relational_metamodel_atl}.
 
 \begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=Simple example for a ATL transformation, label=lst:shortexample]
 //Start Program
@@ -238,11 +252,11 @@ rule Class2Table {
 //End Program
 \end{lstlisting}
 
-The source model is the 'IN' model and the target model is 'OUT'. The rule maps the element EntityModel to FormModel.
+The source model is the 'IN' model and the target model is 'OUT'. The rule actually maps elements of type Class and creates elements of type Table.
 
 \subsubsection{Higher Order Transformations}
 
-Higher order transformations are defined as model transformations where the input and/or the output models are transformation models themselves.\cite{Tisi:2009}
+Higher-order transformations (HOTs) are defined as model transformations where the input and/or the output models are transformation models themselves.\cite{Tisi:2009}
 
 Figure \ref{fig:samplefigure_pdf} shows a sample schema of a higher order transformation for transformation modification
 in ATL where you can see a good overview for the model transformation with transformation models as input and output models.
@@ -276,9 +290,9 @@ order transformations:
 
 The focus of this work is on \textit{Transformation Modifications} (short TM). 
 
-Another possibility of a Higher order transformation is a \textit{second Higher
-order transformation}. That means that a Higher order transformation will also be the
-input/output of another transformation.
+Another possibility of a Higher order transformation is a \textit{second-order HOT}. That means that a Higher order transformation will also be the
+input/output of the second-order HOT. Figure \ref{fig:second_order} exemplifies
+the use of model transformations, HOTs and second-order HOTs.
 
 \begin{figure}
 	\centering
