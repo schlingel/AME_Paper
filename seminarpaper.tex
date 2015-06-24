@@ -357,12 +357,12 @@ The overall goal of this work is to implement seven transformations. The followi
 \textbf{Nr.} & \textbf{Concept}    & \textbf{Mutation operator} & \textbf{Status} \\
 1            & Binding             & Value change               & Done            \\
 2            & Binding             & Value change               & Done            \\
-3            & Binding             & Addition                   &                 \\
+3            & Binding             & Addition                   & Done                \\
 4            & Binding             & Deletion                   & Done            \\
-5            & Out pattern element & Class change               &                 \\
-6            & Out pattern element & Addition                   &                 \\
+5            & Out pattern element & Class change               & Done                \\
+6            & Out pattern element & Addition                   & Done                \\
 7            & In pattern element  & Deletion                   & Done            \\
-8            & In pattern element  & Class change               &                
+8            & In pattern element  & Class change               & Done               
 \label{tbl:goals}
 \end{tabular}
 \caption{The implementation goals}
@@ -373,11 +373,11 @@ The overall goal of this work is to implement seven transformations. The followi
 To understand how the binding mutations work you need to know, that there are two types of bindings in the ATL metamodel:
 
 \begin{itemize}
-	\item Primitive Expressions
-	\item Variable Expressions
+	\item Those which contain only an object of a primitive type
+	\item Those which contain variable expressions
 \end{itemize}
 
-The primitive expressions, like String- or IntegerExpressions, are directly assignable in the ATL rules. Variable expressions have to be composed from the available objects in the metamodel. (See figure~\ref{fig:atl_metamodel_excerpt})
+The primitive expressions, like String- or IntegerExpressions, are directly assignable in the ATL rules. Variable expressions have to be composed from the available objects in the metamodel (see figure~\ref{fig:atl_metamodel_excerpt}).
 
 \begin{figure}
 	\centering
@@ -386,11 +386,11 @@ The primitive expressions, like String- or IntegerExpressions, are directly assi
 	\label{fig:atl_metamodel_excerpt}
 \end{figure}
 
-Bindings are used for the initialization of either \emph{attributes} or \emph{references}. Attributes are primitive values whereas references are relations to other models (variable expressions). Mutation \emph{1} and \emph{2} in table 2 are attribute binding mutations. \emph{3} is a reference binding mutation.
+Bindings are used for the initialization of either \emph{attributes} or \emph{references}. Attributes are primitive values whereas references are relations to other model elements (variable expressions). Mutation \emph{1} and \emph{2} in table 2 are attribute binding mutations. Mutation \emph{3} is a reference binding mutation.
 
 \subsubsection{Deletion}
 
-Deleting a binding is the implicitly omitting of an attribute or reference assignment in the \emph{to}-part of the ATL rule. The example in listing~\ref{lst:delete} demonstrates the simple structure of delete bindings.
+Deleting a binding is the implicit omission of an attribute or reference assignment in the \emph{to}-part of the ATL rule. The example in listing~\ref{lst:delete} demonstrates the simple structure of delete bindings.
 
 \begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=Definition of Delete-Binding., label=lst:delete]
 rule DeleteBinding{
@@ -407,11 +407,11 @@ Therefore the rule has to implement a type lookup to take the set of possible pr
 
 Troya et al proposed in their paper~\cite{Bergmayr:2014} second order HOTs which are applied to the first order HOTs. The result of the first order HOTs transformations contain type information which is available in the second order HOTs.
 
-This results is a two pass transformation:
+This results in a two pass transformation:
 
 \begin{enumerate}
-	\item Add a binding with a dummy name. (e.g. NewBindingPropertyName)
-	\item Lookup available bindings and replace the dummy name with an actual available one.
+	\item Add a binding with a dummy name (e.g. NewBindingPropertyName).
+	\item Lookup available bindings and replace the dummy name with an existing name or type from the corresponding input metamodel.
 \end{enumerate}
 
 Additionally the rule has to take care to prevent the same OutPatternElement to be transformed more than once by filtering out entities which already contain the dummy binding.
@@ -459,57 +459,31 @@ to b2 : ATL!StringExp (
 \end{lstlisting}
 
 Detailed description of addbinding reference:
-For example there exists a simple meta model like shown in figure
-\ref{fig:simple_metamodel}.
+For example there exist two metamodels, where models confirming to the first (left) one are transformed to models confirming to the second (right) one (shown in figure
+\ref{fig:simple_metamodel}).
 
 \begin{figure}
 	\centering
 	\includegraphics[angle=0,width=1\textwidth,natwidth=610,natheight=642]{figures/SimpleMM.pdf}
-	\caption{Example of a simpel metamodel}
+	\caption{Example of a simpel metamodel transformation}
 	\label{fig:simple_metamodel}
 \end{figure}
 
-For the next step we want create a new binding with a reference (for example: b <- c1.a).
-First we have to search a reference from the model. For this reference it is
+For the next step we want create a new binding with a reference (for example: b $<$- c1.a).
+First we have to search for a reference from the model. For this reference it is
 important that there is no binding in the original transformation. Furthermore
-we have to store the attributes propertyName (`b`) and EType (`Type2`). 
-Then we have to search a rule from the original transformation which
-has as a first OutPatternElement one with the `Type2` and next we have to store the type of the corresponding InPatternElement which is 'Class2'.
+we have to store the attributes propertyName (`b`) and EType (`T2`). 
+Then we have to search for a rule from the original transformation which
+has as a first OutPatternElement one with the `T2` and next we have to store the type of the corresponding InPatternElement which is 'C2'.
 For the next step we need a reference from the input metamodel which
-has type Class2 and store its name (`a`). \par
+has type 'C2' and store its name (`a`). \par
 
 For the first implementation of the program it was not implemented to use the original transformation as input of 
 the second order HOT.
-For this reasen we couldn't search for a rule whit the corresponding OPE in the second order HOT, but only in the first order HOT
+For this reason we couldn't search for a rule with the corresponding OPE in the second order HOT, but only in the first order HOT
 But in the context of the first order HOT there is no access to the class names and attributes of the
-input and output model (`Type1`, `Type2`, `Class1`, `Class2`). 
-For this missing link an adaption of Main.java (Line 69-77) was necassary. So the possibility to add another input input model - the original transformation
-(AddBindingReference.atl) - was created (see listing \ref{lst:main}).
-
-\begin{lstlisting}[language=Java, numbers=left,xleftmargin=5.0ex,
-caption=Adaptioon of Main.java., label=lst:main] 
-/** The SecondOrderHOT takes as input, one by one, each of the generic HOTs (together with the input and
-		 * output metamodels of the transformation we want to mutate) and generates one specific mutation for each of the generic ones.
-		 * Since the generic HOTs (that serve as input) are rewritten by the in-place SecondOrderHOT, we first copy them
-		 * into the folder HOTs/specific
-		 */
-		for (String hot : HOTsGenericMutations){
-			copyFile(HOTs + "temp/" + hot + ".xmi", HOTs + "specific/" + hot + ".xmi");
-			TransfoRunnerEMFTVM tr = new TransfoRunnerEMFTVM();
-			tr.runTransformation(HOTs + "specific/" + hot + ".xmi", "ATL",
-					transformation + "temp/" + trans2Mutate + ".xmi", "IN_ATL",
-					transformation + inputMM, "IN_MM",					
-					transformation + outputMM, "OUT_MM",
-					HOTs, "SecondOrderHOT"); //path name plus module name of the transformation
-		}	
-\end{lstlisting}
-
-Furthermore an adaption of TransfoRunnerEMFTVM.java and second order higher
-transformation (line 4: IN\_ATL:IN\_ATL was added) was necassary.
-
-In the figure \ref{fig:addBindingReference} you can see the original
-implementation of the program and as part b in the figure we see the missing
-reference which had to be added. 
+input and output model (`T1`, `T2`, `C1`, `C2`). 
+Since, in order to implement such mutation, the second-order HOT needs information of the ATL transformation to be mutated, we needed to modify and extend the overall approach presented by Troya et al. As shown in figure \ref{fig:addBindingReference}, the second-order HOT has now one more input: the ATL transformation to be mutated. This allows us to define mutations where we need information of rule inter-dependencies.
 
 \begin{figure}
 	\centering
