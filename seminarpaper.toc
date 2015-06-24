@@ -12,8 +12,8 @@
 \contentsline {subsubsection}{Deletion}{11}
 \contentsline {subsubsection}{Addition}{12}
 \contentsline {subsubsection}{Value change}{14}
-\contentsline {subsection}{\numberline {3.2}Implemented InPatternElement mutations}{16}
-\contentsline {subsubsection}{Deletion}{16}
+\contentsline {subsection}{\numberline {3.2}Implemented InPatternElement mutations}{17}
+\contentsline {subsubsection}{Deletion}{17}
 \contentsline {section}{\numberline {4}Related work}{18}
-\contentsline {section}{\numberline {5}Conclusion and future work}{18}
-\contentsline {section}{References}{18}
+\contentsline {section}{\numberline {5}Conclusion and future work}{19}
+\contentsline {section}{References}{19}

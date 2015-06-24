@@ -484,6 +484,33 @@ For this reason we couldn't search for a rule with the corresponding OPE in the 
 But in the context of the first order HOT there is no access to the class names and attributes of the
 input and output model (`T1`, `T2`, `C1`, `C2`). 
 Since, in order to implement such mutation, the second-order HOT needs information of the ATL transformation to be mutated, we needed to modify and extend the overall approach presented by Troya et al. As shown in figure \ref{fig:addBindingReference}, the second-order HOT has now one more input: the ATL transformation to be mutated. This allows us to define mutations where we need information of rule inter-dependencies.
+In listing \ref{lst:addbindingvalues} you can see an example about how to find out the correct value for our new reference binding.
+
+\begin{lstlisting}[language=ATL, numbers=left,xleftmargin=5.0ex, caption=AddBindingValue-Definition., label=lst:addbindingvalues]
+rule AddBindingReferenceValue2{
+	from a : ATL!StringExp(
+		a.stringSymbol = 'testname'
+	)
+	using{
+		
+		classToAdd : Sequence(OUT_MM!EClass) = OUT_MM!EClass.allInstancesFrom('OUT_MM') 
+			-> select(c | c.getEStructuralFeatures() -> exists ( f | f.oclIsTypeOf(OUT_MM!EReference))
+				and c.getEStructuralFeatures() -> exists ( f | allBindingsForClass -> forAll( b | b.propertyName.debug('bindingname') <> f.name.debug('f.name')).debug('forall'))
+			);
+		allBindingsForClass : Sequence(IN_ATL!Binding) = IN_ATL!Binding.allInstancesFrom('IN_ATL').debug('bindings');
+		bindingB : OUT_MM!EStructuralFeature = classToAdd -> first().getEStructuralFeatures() -> select (f | allBindingsForClass -> forAll(b | b.propertyName <> f.name)) -> first();
+		typeB : OUT_MM!EClass = bindingB.getEType();
+
+		c : IN_ATL!MatchedRule = IN_ATL!MatchedRule.allInstancesFrom('IN_ATL') -> select(r | r.outPattern.elements -> first().type.name = typeB.name) -> first().debug();
+		ref : IN_MM!EReference = IN_MM!EReference.allInstancesFrom('IN_MM') -> select(r | r.eReferenceType.name = c.inPattern.elements -> first().type.name) -> first().debug();
+		
+		
+	}
+	to a2 : ATL!StringExp(
+		stringSymbol <- ref.name
+	)
+}
+\end{lstlisting}
 
 \begin{figure}
 	\centering

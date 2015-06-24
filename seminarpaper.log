@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdflatex 2015.4.22)  24 JUN 2015 08:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdflatex 2015.4.22)  24 JUN 2015 09:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -867,56 +867,53 @@ File: figures/AddBindingMissingReference.pdf Graphic file (type pdf)
 
 <use figures/AddBindingMissingReference.pdf>
 Package pdftex.def Info: figures/AddBindingMissingReference.pdf used on input l
-ine 490.
+ine 517.
 (pdftex.def)             Requested size: 537.00494pt x 810.02426pt.
- [14] [15 <./figures/AddBindingMissingReference.pdf>] [16]
-Overfull \hbox (2.97998pt too wide) in paragraph at lines 648--654
+ [14] [15 <./figures/AddBindingMissingReference.pdf>] [16] [17]
+Overfull \hbox (2.97998pt too wide) in paragraph at lines 675--681
 \OT1/cmr/m/n/10 for-ma-tion lan-guage as in chap-ter \OT1/cmr/m/it/10 Mu-ta-tio
 ns in Model Trans-for-ma-tions \OT1/cmr/m/n/10 de-scripted.
  []
 
-[17] (./seminarpaper.bbl [18]
+[18] (./seminarpaper.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 28--32
 [][][]\OT1/cmr/m/sc/9 Jordi Cabot\OT1/cmr/m/n/9 .  http://modeling-languages.co
 m/introducing-higher-order-
  []
 
+[19]
 Missing character: There is no Ã in font cmcsc10!
 Missing character: There is no © in font cmcsc10!
 Missing character: There is no Ã in font cmcsc10!
 Missing character: There is no ± in font cmcsc10!
-) [19] (./seminarpaper.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+) [20] (./seminarpaper.aux) ) 
 Here is how much of TeX's memory you used:
- 17380 strings out of 493109
- 331415 string characters out of 6138587
- 518609 words of memory out of 5000000
- 20498 multiletter control sequences out of 15000+600000
+ 17421 strings out of 493109
+ 331979 string characters out of 6138587
+ 572056 words of memory out of 5000000
+ 20539 multiletter control sequences out of 15000+600000
  14514 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,26n,66p,958b,1666s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2014/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2014/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmib10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsf
-onts/cmextra/cmmib6.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.p
-fb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texl
-ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2014/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2014/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2014/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmtt8.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmtt9.pfb>
-Output written on seminarpaper.pdf (21 pages, 703893 bytes).
+<c:/texlive/2014/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmbx12.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
+><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2014/texmf-d
+ist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb><c:/texlive/2014/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr7.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr9.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texliv
+e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2014/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2014/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on seminarpaper.pdf (22 pages, 706652 bytes).
 PDF statistics:
- 315 PDF objects out of 1000 (max. 8388607)
- 221 compressed objects within 3 object streams
+ 318 PDF objects out of 1000 (max. 8388607)
+ 223 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  58 words of extra memory for PDF output out of 10000 (max. 10000000)
 
