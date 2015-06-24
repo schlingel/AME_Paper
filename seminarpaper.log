@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdflatex 2015.4.22)  24 JUN 2015 09:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdflatex 2015.4.22)  24 JUN 2015 19:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -800,68 +800,67 @@ File: figures/Marked_Mutation_Process.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/Marked_Mutation_Process.pdf used on input line
  169.
 (pdftex.def)             Requested size: 815.57869pt x 306.07977pt.
-
-
-LaTeX Warning: Float too large for page by 406.35458pt on input line 172.
-
-[2] [3] [4 <./figures/Marked_Mutation_Process.pdf>]
-<figures/Overview_ATL.pdf, id=50, 597.52231pt x 845.0471pt>
+ [2] [3 <./figures/Marked_Mutation_Process.pdf>] <figures/Overview_ATL.pdf, id=
+47, 597.52231pt x 845.0471pt>
 File: figures/Overview_ATL.pdf Graphic file (type pdf)
 
 <use figures/Overview_ATL.pdf>
 Package pdftex.def Info: figures/Overview_ATL.pdf used on input line 212.
 (pdftex.def)             Requested size: 597.52086pt x 845.04504pt.
 
-<figures/Class_metamodel.pdf, id=51, 898.35625pt x 546.04pt>
+<figures/Class_metamodel.pdf, id=48, 898.35625pt x 546.04pt>
 File: figures/Class_metamodel.pdf Graphic file (type pdf)
 
 <use figures/Class_metamodel.pdf>
 Package pdftex.def Info: figures/Class_metamodel.pdf used on input line 221.
 (pdftex.def)             Requested size: 347.12354pt x 210.98842pt.
 
-<figures/Relational_metamodel.pdf, id=52, 597.52231pt x 845.0471pt>
+<figures/Relational_metamodel.pdf, id=49, 597.52231pt x 845.0471pt>
 File: figures/Relational_metamodel.pdf Graphic file (type pdf)
 
 <use figures/Relational_metamodel.pdf>
 Package pdftex.def Info: figures/Relational_metamodel.pdf used on input line 22
 8.
 (pdftex.def)             Requested size: 597.52086pt x 845.04504pt.
- [5 <./figures/Overview_ATL.pdf>]
-[6 <./figures/Class_metamodel.pdf> <./figures/Relational_metamodel.pdf>]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <7> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 241.
-
-<figures/HOT.pdf, id=110, 597.52231pt x 845.0471pt>
+ [4] [5 <./figures/Overview_ATL.pdf> <./figures/Class_metamodel.pdf>]
+<figures/HOT.pdf, id=96, 597.52231pt x 845.0471pt>
 File: figures/HOT.pdf Graphic file (type pdf)
  <use figures/HOT.pdf>
 Package pdftex.def Info: figures/HOT.pdf used on input line 266.
 (pdftex.def)             Requested size: 347.12354pt x 490.92711pt.
 
-<figures/SecondOrderHOT.pdf, id=111, 1027.84pt x 342.27875pt>
+[6 <./figures/Relational_metamodel.pdf>] [7 <./figures/HOT.pdf>]
+<figures/SecondOrderHOT.pdf, id=129, 1027.84pt x 342.27875pt>
 File: figures/SecondOrderHOT.pdf Graphic file (type pdf)
 
 <use figures/SecondOrderHOT.pdf>
 Package pdftex.def Info: figures/SecondOrderHOT.pdf used on input line 299.
 (pdftex.def)             Requested size: 347.12354pt x 115.59503pt.
- [7] [8 <./figures/HOT.pdf>]
-Underfull \vbox (badness 5637) has occurred while \output is active []
 
- [9 <./figures/SecondOrderHOT.pdf>] [10]
-<figures/ATL_Metamodel_Excerpt.pdf, id=165, 597.52231pt x 845.0471pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8 <./figures/SecondOrderHOT.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9]
+<figures/ATL_Metamodel_Excerpt.pdf, id=162, 597.52231pt x 845.0471pt>
 File: figures/ATL_Metamodel_Excerpt.pdf Graphic file (type pdf)
 
 <use figures/ATL_Metamodel_Excerpt.pdf>
 Package pdftex.def Info: figures/ATL_Metamodel_Excerpt.pdf used on input line 3
 84.
 (pdftex.def)             Requested size: 597.52086pt x 845.04504pt.
- [11 <./figures/ATL_Metamodel_Excerpt.pdf>] [12] <figures/SimpleMM.pdf, id=188,
+ [10] [11 <./figures/ATL_Metamodel_Excerpt.pdf>] <figures/SimpleMM.pdf, id=185,
  307.1475pt x 198.7425pt>
 File: figures/SimpleMM.pdf Graphic file (type pdf)
 
 <use figures/SimpleMM.pdf>
 Package pdftex.def Info: figures/SimpleMM.pdf used on input line 467.
 (pdftex.def)             Requested size: 307.14674pt x 198.742pt.
- [13 <./figures/SimpleMM.pdf>]
+ [12] [13 <./figures/SimpleMM.pdf>]
 <figures/AddBindingMissingReference.pdf, id=216, 537.00626pt x 810.02625pt>
 File: figures/AddBindingMissingReference.pdf Graphic file (type pdf)
 
@@ -869,32 +868,31 @@ File: figures/AddBindingMissingReference.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/AddBindingMissingReference.pdf used on input l
 ine 517.
 (pdftex.def)             Requested size: 537.00494pt x 810.02426pt.
- [14] [15 <./figures/AddBindingMissingReference.pdf>] [16] [17]
-Overfull \hbox (2.97998pt too wide) in paragraph at lines 675--681
-\OT1/cmr/m/n/10 for-ma-tion lan-guage as in chap-ter \OT1/cmr/m/it/10 Mu-ta-tio
-ns in Model Trans-for-ma-tions \OT1/cmr/m/n/10 de-scripted.
+ [14] [15 <./figures/AddBindingMissingReference.pdf>] [16]
+Overfull \hbox (3.26598pt too wide) in paragraph at lines 624--625
+[][][]\OT1/cmr/m/n/10 Listing 1.10[] shows what would hap-pen if the Out-Pat-te
+r-nEle-ment isn't changed
  []
 
-[18] (./seminarpaper.bbl
+[17] [18] (./seminarpaper.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 28--32
 [][][]\OT1/cmr/m/sc/9 Jordi Cabot\OT1/cmr/m/n/9 .  http://modeling-languages.co
 m/introducing-higher-order-
  []
 
-[19]
 Missing character: There is no Ã in font cmcsc10!
 Missing character: There is no © in font cmcsc10!
 Missing character: There is no Ã in font cmcsc10!
 Missing character: There is no ± in font cmcsc10!
-) [20] (./seminarpaper.aux) ) 
+) [19] (./seminarpaper.aux) ) 
 Here is how much of TeX's memory you used:
  17421 strings out of 493109
  331979 string characters out of 6138587
- 572056 words of memory out of 5000000
+ 538623 words of memory out of 5000000
  20539 multiletter control sequences out of 15000+600000
  14514 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,26n,66p,958b,1666s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,26n,66p,676b,1721s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2014/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmbx10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
@@ -910,10 +908,10 @@ c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texliv
 e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2014/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2014/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on seminarpaper.pdf (22 pages, 706652 bytes).
+Output written on seminarpaper.pdf (21 pages, 707204 bytes).
 PDF statistics:
- 318 PDF objects out of 1000 (max. 8388607)
- 223 compressed objects within 3 object streams
+ 315 PDF objects out of 1000 (max. 8388607)
+ 221 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  58 words of extra memory for PDF output out of 10000 (max. 10000000)
 
