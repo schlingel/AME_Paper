@@ -676,10 +676,14 @@ In the related work \cite{troya:2015} the authors have identified the mutations
 for ATL transformation language. We have implemented a set of possible mutations in ATL they have identified. For the general part of the paper we read some other papers with different approaches.
 In another referenced work \cite{book:KhanHassine} the authors have researched
 how it is possible to support mutation testing in the atlas transformation
-language. The authors have defined a set of mutation operators.
-
-The autohors approach has been validated and the results have shown that their
+language. The authors have defined a set of mutation operators. The autohors approach has been validated and the results have shown that their
 defined operators successfully detected insufficiency in the test suite.
+
+In antoher related work \cite{Aranega:2014} the authors have created a case study with an example class2rdbms and fsm2ffsm transformations. The authors work with an intital test set and this is the most important difference from our approach. Their approach is used to propose new test models to kill the mutants. Furthermore, the authors have been proposed a process based on the transformation traceability for enhancement of the test data set. That is the reason why they can improve the test data set. The approach has been applied to the Kermeta language but is not dedicated to Kermeta that is an another difference regarding our approach in Java. The result of their work is that an automatic modification of the existing test models to create a new test model
+cannot be provided each time.
+
+In the related work \cite{Mottu:2006:MAT:2164453.2164495} the focus of the authors is also the test data set. They measure the quality of the test data set with mutation. The authors present how mutation operators are implemented in
+different languages. They dictacted mutation operators related filtering and navigation. 
 
 \section{Conclusion and future work}
 The overall goal of our work was to complement the approach by Troya et al. \cite{Bergmayr:2014} by implementing a large set of mutations for ATL transformations. This implementation of mutation operators is discussed and evaluated regarding effectiveness. We have selected some mutations in ATL like Binding (Addtion, Deletion and Change), In Pattern Element (Addition, Class change) and Out Pattern Element (Deletion, Class change). In the paper we have explained the effect of the mutations of transformations.
