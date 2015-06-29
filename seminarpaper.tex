@@ -671,6 +671,24 @@ to
 To delete really all of the occurences of the IPE it is necessary to delete not only the simple binding itself, also more complex occurrences like in navigation expression (ATL!NavigationOrAttributeCallExp) or collection Expressions (ATL!CollectionOperationCallExp).
 As these complex expressions can be encapsulated it is neccessary to do this deletion in some kind of recursion to cover really all occurrences.
 
+\subsection{Implemented OutPatternElement mutations}
+
+During the seminar we implemented two different outpattern element (OPE) mutations. One to add a new, additional outpattern element to input rules and another one to alter the used type of the transformation.
+
+\subsubsection{Addition}
+
+The transformation of adding a new OPE works similar to addition IPE transformation. It works in with a generic HOT and a higher order HOT which uses the transformation metamodel.
+
+In the first step a new OPE is created with a dummy string instead of a real type of the metamodel. The second step is inside the higher order HOT. It takes all rules with the dummy string applies an arbitrary, randomly selected, type name instead of the dummy string to the declaration.
+
+\subsubsection{Class change}
+
+This transformation changes the type of an OPE to a sub-type. This way it's guaranteed that all properties are available in the target type of the transformation.
+
+The premiss of transformation is that the first rule contains an OPE type which has a subtype. It takes the first rule and renames the type to the dummy name "cc\_change\_class".
+
+The higher order HOT takes the type of the first rule of the original transformation, gets a subtype of it and changes the dummy name of the input transformation to it.
+
 \section{Related work}
 In the related work \cite{troya:2015} the authors have identified the mutations
 for ATL transformation language. We have implemented a set of possible mutations in ATL they have identified. For the general part of the paper we read some other papers with different approaches.
