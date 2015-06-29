@@ -1,5 +1,12 @@
 \begin{thebibliography}{10}
 
+\bibitem{Aranega:2014}
+{\sc Aranega, V., Mottu, J.-M., Etien, A., Degueule, T., Baudry, B., and
+  Dekeyser, J.-L.}
+\newblock Towards an automation of the mutation analysis dedicated to model
+  transformation.
+\newblock {\em Software Testing, Verification and Reliability\/} (2014).
+
 \bibitem{Bergmayr:2014}
 {\sc Bergmayr, A., Troya, J., and Wimmer, M.}
 \newblock From out-place transformation evolution to in-place model patching.
@@ -31,6 +38,13 @@
 \newblock Accessed: 2015-04-15.
 
 \bibitem{MatMottu2006}
+{\sc Mottu, J.-M., Baudry, B., and Le~Traon, Y.}
+\newblock Mutation analysis testing for model transformations.
+\newblock In {\em Proceedings of the Second European Conference on Model Driven
+  Architecture: Foundations and Applications\/} (Berlin, Heidelberg, 2006),
+  ECMDA-FA'06, Springer-Verlag, pp.~376--390.
+
+\bibitem{Mottu:2006:MAT:2164453.2164495}
 {\sc Mottu, J.-M., Baudry, B., and Le~Traon, Y.}
 \newblock Mutation analysis testing for model transformations.
 \newblock In {\em Proceedings of the Second European Conference on Model Driven

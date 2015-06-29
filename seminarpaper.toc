@@ -6,14 +6,14 @@
 \contentsline {subsection}{\numberline {2.2}Mutation Testing}{3}
 \contentsline {subsubsection}{ATL}{4}
 \contentsline {subsubsection}{Higher Order Transformations}{6}
-\contentsline {subsection}{\numberline {2.3}Mutations in Model Transformations}{8}
+\contentsline {subsection}{\numberline {2.3}Mutations in Model Transformations}{9}
 \contentsline {section}{\numberline {3}Mutations implemented}{10}
 \contentsline {subsection}{\numberline {3.1}Implemented binding mutations}{10}
-\contentsline {subsubsection}{Deletion}{10}
+\contentsline {subsubsection}{Deletion}{11}
 \contentsline {subsubsection}{Addition}{11}
 \contentsline {subsubsection}{Value change}{14}
 \contentsline {subsection}{\numberline {3.2}Implemented InPatternElement mutations}{16}
 \contentsline {subsubsection}{Deletion}{16}
 \contentsline {section}{\numberline {4}Related work}{18}
 \contentsline {section}{\numberline {5}Conclusion and future work}{18}
-\contentsline {section}{References}{19}
+\contentsline {section}{References}{20}
